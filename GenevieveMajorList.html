@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genevieve's Major List — Greg Berry</title>
+  <style>
+    /* ─── Reset & Base ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #0D2B56;
+      --red:      #BD3039;
+      --red-dark: #951F2B;
+      --white:    #FFFFFF;
+      --off-white:#F5F5F5;
+      --gray:     #555555;
+      --border:   #e4e0d8;
+
+      /* school pill colors */
+      --umass:          #dce8f8; --umass-t:          #1a3d73;
+      --neu:            #fce8e8; --neu-t:            #721a1a;
+      --fordham:        #fef0dc; --fordham-t:        #6b3e00;
+      --quinnipiac:     #e2f5ec; --quinnipiac-t:     #0a5236;
+      --holy:           #eeebfe; --holy-t:           #3a2a8a;
+      --brandeis:       #faece6; --brandeis-t:       #6e2710;
+      --clark:          #eaf3de; --clark-t:          #275009;
+      --uconn:          #faeaf0; --uconn-t:          #6e2040;
+      --uvm:            #f0eeea; --uvm-t:            #42403c;
+
+      /* fit badge colors */
+      --fit-excellent-bg: #e8f0fc; --fit-excellent-fg: #1a3a7a;
+      --fit-strong-bg:    #e6f4ee; --fit-strong-fg:    #0e5233;
+      --fit-good-bg:      #fef3e2; --fit-good-fg:      #7a4a00;
+      --fit-limited-bg:   #f2f0ec; --fit-limited-fg:   #5a5550;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ─── Header / Nav ───────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 4px solid var(--red);
+    }
+
+    nav {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      font-family: Georgia, serif;
+    }
+
+    .nav-brand span { color: var(--red); }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--red); }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--navy);
+      border-top: 3px solid var(--red);
+      min-width: 210px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      z-index: 200;
+      list-style: none;
+      padding: 0.3rem 0;
+    }
+
+    .nav-dropdown::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 8px;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+
+    .nav-dropdown-menu li a {
+      display: block;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.85rem;
+      text-transform: none;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      opacity: 1;
+    }
+
+    .nav-dropdown-menu li a:hover {
+      color: var(--white);
+      background: var(--red);
+    }
+
+    /* ─── Page Hero ──────────────────────────────────────────── */
+    .page-hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        135deg,
+        transparent, transparent 40px,
+        rgba(189,48,57,0.06) 40px,
+        rgba(189,48,57,0.06) 41px
+      );
+      pointer-events: none;
+    }
+
+    .page-hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+
+    .page-hero-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .page-hero h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+
+    .page-hero h1 span { color: var(--red); }
+
+    .page-hero p {
+      font-size: 1rem;
+      opacity: 0.75;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ─── Main Content ───────────────────────────────────────── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ─── Controls ───────────────────────────────────────────── */
+    .controls {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .control-group label {
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    select {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      padding: 0.4rem 2rem 0.4rem 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: var(--white);
+      color: #222;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23555' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      transition: border-color 0.15s;
+    }
+
+    select:focus { outline: none; border-color: var(--navy); }
+
+    /* ─── Legend ─────────────────────────────────────────────── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .legend-label {
+      font-size: 0.72rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-right: 4px;
+    }
+
+    /* ─── Row count ──────────────────────────────────────────── */
+    .row-count {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ─── School Pills ───────────────────────────────────────── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      white-space: nowrap;
+      margin: 2px 2px 2px 0;
+    }
+
+    .pill.umass      { background: var(--umass);      color: var(--umass-t); }
+    .pill.neu        { background: var(--neu);        color: var(--neu-t); }
+    .pill.fordham    { background: var(--fordham);    color: var(--fordham-t); }
+    .pill.quinnipiac { background: var(--quinnipiac); color: var(--quinnipiac-t); }
+    .pill.holy       { background: var(--holy);       color: var(--holy-t); }
+    .pill.brandeis   { background: var(--brandeis);   color: var(--brandeis-t); }
+    .pill.clark      { background: var(--clark);      color: var(--clark-t); }
+    .pill.uconn      { background: var(--uconn);      color: var(--uconn-t); }
+    .pill.uvm        { background: var(--uvm);        color: var(--uvm-t); }
+
+    /* ─── Fit Badges ─────────────────────────────────────────── */
+    .fit-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .fit-Excellent { background: var(--fit-excellent-bg); color: var(--fit-excellent-fg); }
+    .fit-Strong    { background: var(--fit-strong-bg);    color: var(--fit-strong-fg); }
+    .fit-Good      { background: var(--fit-good-bg);      color: var(--fit-good-fg); }
+    .fit-Limited   { background: var(--fit-limited-bg);   color: var(--fit-limited-fg); }
+
+    /* ─── Table ──────────────────────────────────────────────── */
+    .table-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    colgroup col.col-major   { width: 15%; }
+    colgroup col.col-schools { width: 22%; }
+    colgroup col.col-about   { width: 25%; }
+    colgroup col.col-career  { width: 25%; }
+    colgroup col.col-fit     { width: 13%; }
+
+    thead tr {
+      background: var(--navy);
+      border-bottom: 3px solid var(--red);
+    }
+
+    thead th {
+      text-align: left;
+      padding: 9px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #ececec;
+      transition: background 0.1s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #faf6f6; }
+
+    td {
+      padding: 11px 12px;
+      vertical-align: top;
+      line-height: 1.55;
+      color: #333;
+    }
+
+    td.col-major {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+
+    td.col-about, td.col-career { font-size: 12px; color: #444; }
+
+    .career-note {
+      font-size: 11px;
+      color: var(--gray);
+      font-style: italic;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed #ddd;
+      line-height: 1.5;
+    }
+
+    tr.hidden { display: none; }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 4px solid var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    footer a { color: var(--red); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 800px) {
+      td.col-about, td.col-career,
+      thead th:nth-child(3), thead th:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <nav>
+      <a class="nav-brand" href="index.html">Greg <span>Berry</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Projects</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="JocelyneMajorList.html">Jocelyne's Major List</a></li>
+            <li><a href="GenevieveMajorList.html">Genevieve's Major List</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.linkedin.com/in/gberry/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-badge">College Research</div>
+      <h1>Genevieve's <span>Major List</span></h1>
+      <p>Majors by fit for a pre-law / communications pathway &mdash; based on confirmed program offerings at target schools as of spring 2026.</p>
+    </div>
+  </div>
+
+  <!-- ── Main ── -->
+  <main>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="schoolFilter">School</label>
+        <select id="schoolFilter" onchange="filterTable()">
+          <option value="all">All schools</option>
+          <option value="umass">UMass Amherst</option>
+          <option value="neu">Northeastern</option>
+          <option value="fordham">Fordham</option>
+          <option value="quinnipiac">Quinnipiac</option>
+          <option value="holy">Holy Cross</option>
+          <option value="brandeis">Brandeis</option>
+          <option value="clark">Clark</option>
+          <option value="uconn">UConn</option>
+          <option value="uvm">UVM</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="fitFilter">Fit</label>
+        <select id="fitFilter" onchange="filterTable()">
+          <option value="all">All fit levels</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Strong">Strong</option>
+          <option value="Good">Good</option>
+          <option value="Limited">Limited</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span class="legend-label">Schools:</span>
+      <span class="pill umass">UMass Amherst</span>
+      <span class="pill neu">Northeastern</span>
+      <span class="pill fordham">Fordham</span>
+      <span class="pill quinnipiac">Quinnipiac</span>
+      <span class="pill holy">Holy Cross</span>
+      <span class="pill brandeis">Brandeis</span>
+      <span class="pill clark">Clark</span>
+      <span class="pill uconn">UConn</span>
+      <span class="pill uvm">UVM</span>
+    </div>
+
+    <p class="row-count" id="rowCount"></p>
+
+    <div class="table-wrap">
+      <table>
+        <colgroup>
+          <col class="col-major" />
+          <col class="col-schools" />
+          <col class="col-about" />
+          <col class="col-career" />
+          <col class="col-fit" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Major</th>
+            <th>School(s)</th>
+            <th>What it&rsquo;s about</th>
+            <th>What you can do with it</th>
+            <th>Fit</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>Sources: official program pages, spring 2026. &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/gberry/" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script>
+    const ROWS = [
+      {
+        major: "Political Science",
+        schools: ["umass","neu","fordham","quinnipiac","holy","brandeis","clark","uconn","uvm"],
+        labels:  ["UMass","Northeastern","Fordham","Quinnipiac","Holy Cross","Brandeis","Clark","UConn","UVM"],
+        about: "Government, power, institutions, law, and democracy. Heavy reading and writing with strong analytical training. Most programs cover American politics, comparative politics, international relations, and political theory.",
+        careers: "Law school (the most natural pathway), government service, policy analyst, diplomacy, campaign management, journalism, nonprofit leadership, grad school in law or policy.",
+        note: "The single strongest pre-law major on the list. Aligns directly with her writing strengths, her humanities focus, and her career direction.",
+        fit: "Excellent"
+      },
+      {
+        major: "Communication / Communication &amp; Media Studies",
+        schools: ["umass","neu","fordham","quinnipiac","clark","uconn"],
+        labels:  ["UMass","Northeastern","Fordham","Quinnipiac","Clark","UConn"],
+        about: "How media, messaging, and discourse shape culture, politics, and organizations. Mixes theory (media effects, persuasion, political communication) with applied work (writing, campaigns, PR). Fordham and Northeastern have strong media-market access.",
+        careers: "Media, public relations, advocacy, political communications, law (especially media law), marketing, nonprofit communications, journalism.",
+        note: "Directly matches her stated interest in Communications as a pre-law pathway. Quinnipiac and Northeastern are professionally focused; Clark and UMass are more theory-grounded.",
+        fit: "Excellent"
+      },
+      {
+        major: "Journalism",
+        schools: ["neu","quinnipiac"],
+        labels:  ["Northeastern","Quinnipiac"],
+        about: "Reporting, writing, storytelling, and media production. Northeastern\u2019s program is co-op integrated; Quinnipiac has a professional school with state-of-the-art facilities. Both emphasize writing craft and real-world experience.",
+        careers: "Journalism (print, digital, broadcast), communications, public affairs, law school prep, corporate communications, political campaigns.",
+        note: "A strong alternative to Comm for a student with serious writing strength. Northeastern offers a combined Journalism + Political Science major explicitly noted as preparation for law school.",
+        fit: "Excellent"
+      },
+      {
+        major: "Public Policy",
+        schools: ["umass","quinnipiac"],
+        labels:  ["UMass","Quinnipiac"],
+        about: "How government addresses public problems: healthcare, education, environment, housing, law. UMass has a dedicated School of Public Policy with internship-intensive capstone projects. Quinnipiac\u2019s Law in Society major is adjacent.",
+        careers: "Government, nonprofits, law school (direct pipeline), policy analyst, community development, social enterprise.",
+        note: "UMass\u2019s public policy major explicitly names law school preparation as an outcome. Strong match for her career direction.",
+        fit: "Excellent"
+      },
+      {
+        major: "English",
+        schools: ["umass","fordham","holy","brandeis","clark","uconn","uvm"],
+        labels:  ["UMass","Fordham","Holy Cross","Brandeis","Clark","UConn","UVM"],
+        about: "Literature, rhetoric, writing, and textual analysis. Writing-intensive by definition. Holy Cross and Brandeis have rigorous literary traditions. Fordham emphasizes writing craft within a Jesuit liberal arts framework.",
+        careers: "Law school (a well-regarded pathway), publishing, journalism, education, communications, graduate school.",
+        note: "A classical pre-law pathway. Excellent fit for her strengths, though less directly connected to policy or media than Political Science or Communications.",
+        fit: "Strong"
+      },
+      {
+        major: "International Relations / Global Studies",
+        schools: ["umass","neu","fordham","brandeis","clark","uvm"],
+        labels:  ["UMass","Northeastern","Fordham","Brandeis","Clark","UVM"],
+        about: "Foreign policy, diplomacy, international institutions, global economics, and cross-cultural analysis. UVM offers this as Global Studies; Clark and Brandeis have strong international programs.",
+        careers: "Law (international law, human rights), foreign service, NGOs, policy work, graduate programs in IR or international law.",
+        note: "A good match if she has international interests. Pairs well with her Mandarin Chinese background, which is a real differentiator in this field.",
+        fit: "Strong"
+      },
+      {
+        major: "Sociology",
+        schools: ["umass","neu","fordham","brandeis","clark","uconn","uvm"],
+        labels:  ["UMass","Northeastern","Fordham","Brandeis","Clark","UConn","UVM"],
+        about: "Social structures, inequality, institutions, and collective behavior. Research and writing heavy. Brandeis and Fordham have strong departments with social justice emphases.",
+        careers: "Law school, social work, policy, advocacy, human resources, education, communications.",
+        note: "An underrated pre-law pathway. Especially strong at schools with social justice missions. A good complement if combined with a second major in Political Science.",
+        fit: "Strong"
+      },
+      {
+        major: "Philosophy",
+        schools: ["fordham","holy","brandeis","clark","uconn","uvm"],
+        labels:  ["Fordham","Holy Cross","Brandeis","Clark","UConn","UVM"],
+        about: "Logic, ethics, epistemology, political philosophy, and argumentation. Holy Cross has a particularly strong Jesuit-informed philosophy tradition. Writing and argumentation-intensive.",
+        careers: "Law school (philosophy majors score highest on the LSAT on average), graduate school, ethics consulting, business, communications.",
+        note: "One of the highest-LSAT-scoring majors nationally. If she has any philosophical curiosity, worth serious consideration\u2014especially at Holy Cross, where it is a flagship program.",
+        fit: "Strong"
+      },
+      {
+        major: "Economics",
+        schools: ["umass","neu","fordham","holy","brandeis","clark","uconn","uvm"],
+        labels:  ["UMass","Northeastern","Fordham","Holy Cross","Brandeis","Clark","UConn","UVM"],
+        about: "Quantitative analysis of markets, policy, behavior, and resource allocation. More math-intensive than her other options, but she could lean into the political economy and policy tracks.",
+        careers: "Business, finance, policy analysis, law school, consulting, government.",
+        note: "A strong credential but the quantitative component is a risk given her math profile. More viable if she stays with policy-track courses and pairs it with a Political Science minor.",
+        fit: "Good"
+      },
+      {
+        major: "Public Relations",
+        schools: ["quinnipiac"],
+        labels:  ["Quinnipiac"],
+        about: "Strategic communication, media relations, campaign planning, brand messaging, and crisis communication. Quinnipiac\u2019s PR program is housed in a professional school with strong industry ties.",
+        careers: "PR, corporate communications, marketing, nonprofit communications, political campaigns.",
+        note: "Professionally focused and writing-intensive, but more vocational than pre-law. A better option if interest in law school cools and she prioritizes communications industry work.",
+        fit: "Good"
+      },
+      {
+        major: "History",
+        schools: ["umass","fordham","holy","brandeis","clark","uconn","uvm"],
+        labels:  ["UMass","Fordham","Holy Cross","Brandeis","Clark","UConn","UVM"],
+        about: "Primary source analysis, historical argumentation, and writing-intensive research. Fordham and Holy Cross both have strong history departments.",
+        careers: "Law school, graduate school, teaching, public service, journalism.",
+        note: "A legitimate pre-law path and strong fit for her writing ability, but less directly connected to her policy and media interests than Political Science or Communications.",
+        fit: "Good"
+      },
+      {
+        major: "Art History",
+        schools: ["umass","fordham","holy","brandeis","clark","uconn","uvm"],
+        labels:  ["UMass","Fordham","Holy Cross","Brandeis","Clark","UConn","UVM"],
+        about: "Visual analysis, cultural history, criticism, and museum studies. Writing-intensive and discussion-based. Fordham\u2019s NYC location provides exceptional gallery and museum access.",
+        careers: "Museum work, arts administration, cultural policy, education, law (intellectual property, art law).",
+        note: "An intriguing option given her AP Art History plans and creative interests, especially if she\u2019s considering arts management or cultural policy.",
+        fit: "Good"
+      },
+      {
+        major: "Business Administration / Management",
+        schools: ["umass","neu","fordham","quinnipiac","clark","uconn"],
+        labels:  ["UMass","Northeastern","Fordham (Gabelli)","Quinnipiac","Clark","UConn"],
+        about: "Finance, marketing, management, strategy, and operations. Fordham\u2019s Gabelli School and Northeastern\u2019s D\u2019Amore-McKim School are well-regarded and NYC/Boston-integrated.",
+        careers: "Business, consulting, entrepreneurship, MBA programs, some business law tracks.",
+        note: "More viable if her interest in entrepreneurship or business law becomes primary. Less writing-intensive than her strengths suggest and less direct as a pre-law pathway.",
+        fit: "Limited"
+      },
+      {
+        major: "Creative Writing",
+        schools: ["brandeis","clark"],
+        labels:  ["Brandeis","Clark"],
+        about: "Fiction, nonfiction, and poetry with workshop-based instruction. Both Brandeis and Clark have standalone BA programs. Clark\u2019s version includes a communications track.",
+        careers: "Publishing, journalism, writing, education, communications, law (less direct).",
+        note: "A fit for her creative side, but the least direct pre-law or policy pathway on the list. More useful as a minor to complement Political Science or Communications.",
+        fit: "Limited"
+      }
+    ];
+
+    const SCHOOL_CLASS = {
+      umass:"umass", neu:"neu", fordham:"fordham", quinnipiac:"quinnipiac",
+      holy:"holy", brandeis:"brandeis", clark:"clark", uconn:"uconn", uvm:"uvm"
+    };
+
+    function buildRow(r) {
+      const pills = r.schools.map((s,i) =>
+        `<span class="pill ${SCHOOL_CLASS[s]}">${r.labels[i]}</span>`
+      ).join("");
+      const note = r.note
+        ? `<div class="career-note">${r.note}</div>`
+        : "";
+      return `
+        <tr data-schools="${r.schools.join(",")}" data-fit="${r.fit}">
+          <td class="col-major">${r.major}</td>
+          <td class="col-schools">${pills}</td>
+          <td class="col-about">${r.about}</td>
+          <td class="col-career">${r.careers}${note}</td>
+          <td><span class="fit-badge fit-${r.fit}">${r.fit}</span></td>
+        </tr>`;
+    }
+
+    function renderAll() {
+      document.getElementById("tableBody").innerHTML = ROWS.map(buildRow).join("");
+      updateCount();
+    }
+
+    function filterTable() {
+      const school = document.getElementById("schoolFilter").value;
+      const fit    = document.getElementById("fitFilter").value;
+      document.querySelectorAll("#tableBody tr").forEach(tr => {
+        const schools  = tr.dataset.schools;
+        const rowFit   = tr.dataset.fit;
+        const showSchool = school === "all" || schools.split(",").includes(school);
+        const showFit    = fit === "all" || rowFit === fit;
+        tr.classList.toggle("hidden", !(showSchool && showFit));
+      });
+      updateCount();
+    }
+
+    function updateCount() {
+      const total   = document.querySelectorAll("#tableBody tr").length;
+      const visible = document.querySelectorAll("#tableBody tr:not(.hidden)").length;
+      document.getElementById("rowCount").textContent =
+        `Showing ${visible} of ${total} majors`;
+    }
+
+    renderAll();
+  </script>
+
+</body>
+</html>
