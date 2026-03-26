@@ -228,10 +228,28 @@
       color: #222;
       cursor: pointer;
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23555' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2020/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23555' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 8px center;
       transition: border-color 0.15s;
+    }
+
+    select[multiple] {
+      padding: 0;
+      background-image: none;
+      min-height: 80px;
+      height: auto;
+      cursor: default;
+    }
+
+    select[multiple] option { padding: 4px 10px; }
+
+    .hint {
+      font-size: 0.68rem;
+      color: var(--gray);
+      opacity: 0.8;
+      display: block;
+      margin-top: 3px;
     }
 
     select:focus { outline: none; border-color: var(--navy); }
@@ -472,8 +490,7 @@
       </div>
       <div class="control-group">
         <label for="schoolFilter">School</label>
-        <select id="schoolFilter" onchange="filterTable()">
-          <option value="all">All schools</option>
+        <select id="schoolFilter" multiple onchange="filterTable()">
           <option value="umass">UMass Amherst</option>
           <option value="neu">Northeastern</option>
           <option value="fordham">Fordham</option>
@@ -484,16 +501,17 @@
           <option value="uconn">UConn</option>
           <option value="uvm">UVM</option>
         </select>
+        <small class="hint">Ctrl/⌘+click for multiple</small>
       </div>
       <div class="control-group">
         <label for="fitFilter">Fit</label>
-        <select id="fitFilter" onchange="filterTable()">
-          <option value="all">All fit levels</option>
+        <select id="fitFilter" multiple onchange="filterTable()">
           <option value="Excellent">Excellent</option>
           <option value="Strong">Strong</option>
           <option value="Good">Good</option>
           <option value="Limited">Limited</option>
         </select>
+        <small class="hint">Ctrl/⌘+click for multiple</small>
       </div>
       <button class="btn-reset" onclick="resetFilters()">Reset</button>
     </div>
@@ -706,15 +724,15 @@
     }
 
     function filterTable() {
-      const school  = document.getElementById("schoolFilter").value;
-      const fit     = document.getElementById("fitFilter").value;
-      const search  = document.getElementById("searchInput").value.trim().toLowerCase();
+      const schoolVals = Array.from(document.getElementById("schoolFilter").selectedOptions).map(o => o.value);
+      const fitVals    = Array.from(document.getElementById("fitFilter").selectedOptions).map(o => o.value);
+      const search     = document.getElementById("searchInput").value.trim().toLowerCase();
       document.querySelectorAll("#tableBody tr").forEach(tr => {
         const schools    = tr.dataset.schools || '';
         const rowFit     = tr.dataset.fit || '';
         const text       = tr.textContent.toLowerCase();
-        const showSchool = school === "all" || schools.split(",").includes(school);
-        const showFit    = fit === "all" || rowFit === fit;
+        const showSchool = schoolVals.length === 0 || schools.split(",").some(s => schoolVals.includes(s));
+        const showFit    = fitVals.length === 0    || fitVals.includes(rowFit);
         const showSearch = !search || text.includes(search);
         tr.classList.toggle("hidden", !(showSchool && showFit && showSearch));
       });
@@ -723,8 +741,8 @@
 
     function resetFilters() {
       document.getElementById("searchInput").value = '';
-      document.getElementById("schoolFilter").value = 'all';
-      document.getElementById("fitFilter").value = 'all';
+      document.getElementById("schoolFilter").selectedIndex = -1;
+      document.getElementById("fitFilter").selectedIndex = -1;
       sortCol = -1;
       sortAsc = true;
       document.querySelectorAll('thead th').forEach(th => th.classList.remove('sort-asc', 'sort-desc'));

@@ -790,8 +790,11 @@
 
   <script>
     let sortCol = -1, sortAsc = true;
-    let currentFilter = 'all';
     let originalOrder = null;
+    const activeFits    = new Set();
+    const activeSchools = new Set();
+    const FIT_VALS     = new Set(['strong','possible','worth']);
+    const SCHOOL_VALS  = new Set(['curry','dean','fsu','massbay','mitchell','une']);
 
     function initTable() {
       const tbody = document.getElementById('tableBody');
@@ -800,11 +803,25 @@
     }
 
     function filterTable(filter, btn) {
-      if (btn) {
+      if (filter === 'all') {
+        activeFits.clear();
+        activeSchools.clear();
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+      } else {
+        // toggle the clicked filter
+        const targetSet = FIT_VALS.has(filter) ? activeFits : activeSchools;
+        if (targetSet.has(filter)) {
+          targetSet.delete(filter);
+          btn.classList.remove('active');
+        } else {
+          targetSet.add(filter);
+          btn.classList.add('active');
+        }
+        // deactivate "All majors" button when any filter is active
+        const allBtn = document.querySelector('.filter-btn');
+        allBtn.classList.toggle('active', activeFits.size === 0 && activeSchools.size === 0);
       }
-      currentFilter = filter;
       applyFilters();
     }
 
@@ -818,16 +835,10 @@
         const schools = row.dataset.schools || '';
         const text    = row.textContent.toLowerCase();
 
-        let showFitSchool;
-        if (currentFilter === 'all') {
-          showFitSchool = true;
-        } else if (['strong','possible','worth'].includes(currentFilter)) {
-          showFitSchool = fit === currentFilter;
-        } else {
-          showFitSchool = schools.includes(currentFilter);
-        }
+        const showFit    = activeFits.size === 0    || activeFits.has(fit);
+        const showSchool = activeSchools.size === 0 || schools.split(' ').some(s => activeSchools.has(s));
         const showSearch = !search || text.includes(search);
-        row.classList.toggle('hidden', !(showFitSchool && showSearch));
+        row.classList.toggle('hidden', !(showFit && showSchool && showSearch));
       });
 
       // Section rows: show only when not sorted
@@ -876,9 +887,10 @@
 
     function resetFilters() {
       document.getElementById('searchInput').value = '';
+      activeFits.clear();
+      activeSchools.clear();
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       document.querySelector('.filter-btn').classList.add('active');
-      currentFilter = 'all';
 
       if (originalOrder && sortCol !== -1) {
         sortCol = -1;

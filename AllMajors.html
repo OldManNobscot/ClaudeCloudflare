@@ -214,12 +214,30 @@
       transition: border-color 0.15s;
     }
 
-    select {
+    select:not([multiple]) {
       padding-right: 2rem;
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23555' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 8px center;
+    }
+
+    select[multiple] {
+      padding: 0;
+      background-image: none;
+      min-height: 80px;
+      height: auto;
+      cursor: default;
+    }
+
+    select[multiple] option { padding: 4px 10px; }
+
+    .hint {
+      font-size: 0.68rem;
+      color: var(--gray);
+      opacity: 0.8;
+      display: block;
+      margin-top: 3px;
     }
 
     .search-input {
@@ -415,8 +433,7 @@
       </div>
       <div class="control-group">
         <label for="schoolFilter">School</label>
-        <select id="schoolFilter" onchange="filterTable()">
-          <option value="">All schools</option>
+        <select id="schoolFilter" multiple onchange="filterTable()">
           <option value="Brandeis">Brandeis</option>
           <option value="Clark">Clark</option>
           <option value="Fordham">Fordham</option>
@@ -429,11 +446,11 @@
           <option value="UVM">UVM</option>
           <option value="Vassar">Vassar</option>
         </select>
+        <small class="hint">Ctrl/⌘+click for multiple</small>
       </div>
       <div class="control-group">
         <label for="catFilter">Category</label>
-        <select id="catFilter" onchange="filterTable()">
-          <option value="">All categories</option>
+        <select id="catFilter" multiple onchange="filterTable()">
           <option value="Business & Management">Business & Management</option>
           <option value="Communications & Media">Communications & Media</option>
           <option value="Design & Architecture">Design & Architecture</option>
@@ -445,6 +462,7 @@
           <option value="Natural Sciences & Math">Natural Sciences & Math</option>
           <option value="Social Sciences">Social Sciences</option>
         </select>
+        <small class="hint">Ctrl/⌘+click for multiple</small>
       </div>
       <button class="btn-reset" onclick="resetFilters()">Reset</button>
     </div>
@@ -519,15 +537,15 @@
 
     function filterTable() {
       const search = document.getElementById('searchInput').value.trim().toLowerCase();
-      const school = document.getElementById('schoolFilter').value;
-      const cat    = document.getElementById('catFilter').value;
+      const schoolVals = Array.from(document.getElementById('schoolFilter').selectedOptions).map(o => o.value);
+      const catVals    = Array.from(document.getElementById('catFilter').selectedOptions).map(o => o.value);
       document.querySelectorAll('#tableBody tr').forEach(function(tr) {
         const matchSearch = !search ||
           tr.dataset.major.toLowerCase().includes(search) ||
           tr.dataset.desc.toLowerCase().includes(search) ||
           tr.dataset.careers.toLowerCase().includes(search);
-        const matchSchool = !school || tr.dataset.school === school;
-        const matchCat    = !cat    || tr.dataset.cat === cat;
+        const matchSchool = schoolVals.length === 0 || schoolVals.includes(tr.dataset.school);
+        const matchCat    = catVals.length === 0    || catVals.includes(tr.dataset.cat);
         tr.classList.toggle('hidden', !(matchSearch && matchSchool && matchCat));
       });
       updateCount();
@@ -535,8 +553,8 @@
 
     function resetFilters() {
       document.getElementById('searchInput').value = '';
-      document.getElementById('schoolFilter').value = '';
-      document.getElementById('catFilter').value = '';
+      document.getElementById('schoolFilter').selectedIndex = -1;
+      document.getElementById('catFilter').selectedIndex = -1;
       filterTable();
     }
 
