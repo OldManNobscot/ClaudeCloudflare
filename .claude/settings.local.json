@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cd /c/Users/gberry/ClaudeCloudflare && git add .)"
+      "Bash(cd /c/Users/gberry/ClaudeCloudflare && git add .)",
+      "Bash(git checkout:*)",
+      "Read(//c/Users/gberry/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/c90b24c4-5975-4fb4-9813-78cb754d7781/ca78d79f-125b-4afe-ae32-2085686f4851/skills/xlsx/**)",
+      "Bash(python -c \":*)",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Bash(where py:*)",
+      "Bash(pip install:*)",
+      "Bash(python _build_majors.py)"
     ]
   }
 }
