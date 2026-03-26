@@ -235,7 +235,14 @@
       border-bottom: 3px solid var(--red);
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
     }
+
+    thead th:hover { background: #1a3f73; }
+    thead th.sort-asc::after  { content: ' ▲'; font-size: 9px; opacity: 0.8; }
+    thead th.sort-desc::after { content: ' ▼'; font-size: 9px; opacity: 0.8; }
 
     td {
       padding: 9px 10px;
@@ -308,6 +315,70 @@
 
     footer a { color: var(--red); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+
+    .table-controls {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .control-group label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .search-input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: var(--white);
+      color: #222;
+      cursor: text;
+      min-width: 200px;
+      transition: border-color 0.15s;
+    }
+
+    .search-input:focus { outline: none; border-color: var(--navy); }
+
+    .btn-reset {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #bbb;
+      border-radius: 3px;
+      background: var(--white);
+      color: var(--gray);
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .btn-reset:hover {
+      background: var(--off-white);
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    .row-count {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-bottom: 0.75rem;
+    }
   </style>
 </head>
 <body>
@@ -344,6 +415,14 @@
   <!-- ── Main ── -->
   <main>
 
+    <div class="table-controls">
+      <div class="control-group">
+        <label for="searchInput">Search</label>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search majors…" oninput="applyFilters()">
+      </div>
+      <button class="btn-reset" onclick="resetFilters()">Reset</button>
+    </div>
+
     <div class="filter-bar">
       <button class="filter-btn active" onclick="filterTable('all', this)">All majors</button>
       <button class="filter-btn" onclick="filterTable('strong', this)">Strong fit</button>
@@ -357,15 +436,17 @@
       <button class="filter-btn" onclick="filterTable('une', this)">UNE</button>
     </div>
 
+    <p class="row-count" id="rowCount"></p>
+
     <table>
       <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"></colgroup>
       <thead>
         <tr>
-          <th>Major</th>
-          <th>School(s)</th>
-          <th>What it's about</th>
-          <th>What you can do with it</th>
-          <th>Fit</th>
+          <th onclick="sortTable(0)">Major</th>
+          <th onclick="sortTable(1)">School(s)</th>
+          <th onclick="sortTable(2)">What it's about</th>
+          <th onclick="sortTable(3)">What you can do with it</th>
+          <th onclick="sortTable(4)">Fit</th>
         </tr>
       </thead>
       <tbody id="tableBody">
@@ -708,32 +789,118 @@
   </footer>
 
   <script>
+    let sortCol = -1, sortAsc = true;
+    let currentFilter = 'all';
+    let originalOrder = null;
+
+    function initTable() {
+      const tbody = document.getElementById('tableBody');
+      originalOrder = Array.from(tbody.querySelectorAll('tr'));
+      updateCount();
+    }
+
     function filterTable(filter, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const rows = document.querySelectorAll('#tableBody tr');
-      rows.forEach(row => {
-        if (row.classList.contains('section-row')) { row.classList.remove('hidden'); return; }
+      if (btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      currentFilter = filter;
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const search = document.getElementById('searchInput').value.trim().toLowerCase();
+      const isSorted = sortCol !== -1;
+
+      document.querySelectorAll('#tableBody tr').forEach(row => {
+        if (row.classList.contains('section-row')) return;
         const fit     = row.dataset.fit     || '';
         const schools = row.dataset.schools || '';
-        if (filter === 'all') {
-          row.classList.remove('hidden');
-        } else if (['strong','possible','worth'].includes(filter)) {
-          row.classList.toggle('hidden', fit !== filter);
+        const text    = row.textContent.toLowerCase();
+
+        let showFitSchool;
+        if (currentFilter === 'all') {
+          showFitSchool = true;
+        } else if (['strong','possible','worth'].includes(currentFilter)) {
+          showFitSchool = fit === currentFilter;
         } else {
-          row.classList.toggle('hidden', !schools.includes(filter));
+          showFitSchool = schools.includes(currentFilter);
         }
+        const showSearch = !search || text.includes(search);
+        row.classList.toggle('hidden', !(showFitSchool && showSearch));
       });
+
+      // Section rows: show only when not sorted
       document.querySelectorAll('.section-row').forEach(section => {
-        let next = section.nextElementSibling;
-        let hasVisible = false;
-        while (next && !next.classList.contains('section-row')) {
-          if (!next.classList.contains('hidden')) hasVisible = true;
-          next = next.nextElementSibling;
+        if (isSorted) {
+          section.style.display = 'none';
+        } else {
+          section.style.display = '';
+          let next = section.nextElementSibling;
+          let hasVisible = false;
+          while (next && !next.classList.contains('section-row')) {
+            if (!next.classList.contains('hidden')) hasVisible = true;
+            next = next.nextElementSibling;
+          }
+          section.classList.toggle('hidden', !hasVisible);
         }
-        section.classList.toggle('hidden', !hasVisible);
       });
+
+      updateCount();
     }
+
+    function sortTable(col) {
+      const ths = document.querySelectorAll('thead th');
+      if (sortCol === col) {
+        sortAsc = !sortAsc;
+      } else {
+        sortCol = col;
+        sortAsc = true;
+      }
+      ths.forEach(function(th, i) {
+        th.classList.remove('sort-asc', 'sort-desc');
+        if (i === col) th.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
+      });
+
+      const tbody = document.getElementById('tableBody');
+      const dataRows = Array.from(tbody.querySelectorAll('tr:not(.section-row)'));
+      dataRows.sort(function(a, b) {
+        const av = a.cells[col] ? a.cells[col].textContent.trim() : '';
+        const bv = b.cells[col] ? b.cells[col].textContent.trim() : '';
+        return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+      });
+      dataRows.forEach(function(r) { tbody.appendChild(r); });
+
+      applyFilters();
+    }
+
+    function resetFilters() {
+      document.getElementById('searchInput').value = '';
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.filter-btn').classList.add('active');
+      currentFilter = 'all';
+
+      if (originalOrder && sortCol !== -1) {
+        sortCol = -1;
+        sortAsc = true;
+        document.querySelectorAll('thead th').forEach(th => th.classList.remove('sort-asc', 'sort-desc'));
+        const tbody = document.getElementById('tableBody');
+        originalOrder.forEach(r => {
+          r.style.display = '';
+          tbody.appendChild(r);
+        });
+      }
+
+      applyFilters();
+    }
+
+    function updateCount() {
+      const total   = document.querySelectorAll('#tableBody tr:not(.section-row)').length;
+      const visible = document.querySelectorAll('#tableBody tr:not(.section-row):not(.hidden)').length;
+      document.getElementById('rowCount').textContent = `Showing ${visible} of ${total} majors`;
+    }
+
+    document.addEventListener('DOMContentLoaded', initTable);
   </script>
 
 </body>

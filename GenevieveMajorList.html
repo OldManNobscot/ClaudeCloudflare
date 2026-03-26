@@ -236,6 +236,40 @@
 
     select:focus { outline: none; border-color: var(--navy); }
 
+    .search-input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: var(--white);
+      color: #222;
+      cursor: text;
+      min-width: 200px;
+      transition: border-color 0.15s;
+    }
+
+    .search-input:focus { outline: none; border-color: var(--navy); }
+
+    .btn-reset {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #bbb;
+      border-radius: 3px;
+      background: var(--white);
+      color: var(--gray);
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .btn-reset:hover {
+      background: var(--off-white);
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
     /* ─── Legend ─────────────────────────────────────────────── */
     .legend {
       display: flex;
@@ -331,7 +365,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--white);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
     }
+
+    thead th:hover { background: #1a3f73; }
+    thead th.sort-asc::after  { content: ' ▲'; font-size: 9px; opacity: 0.8; }
+    thead th.sort-desc::after { content: ' ▼'; font-size: 9px; opacity: 0.8; }
 
     tbody tr {
       border-bottom: 1px solid #ececec;
@@ -426,6 +467,10 @@
 
     <div class="controls">
       <div class="control-group">
+        <label for="searchInput">Search</label>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search majors…" oninput="filterTable()">
+      </div>
+      <div class="control-group">
         <label for="schoolFilter">School</label>
         <select id="schoolFilter" onchange="filterTable()">
           <option value="all">All schools</option>
@@ -450,6 +495,7 @@
           <option value="Limited">Limited</option>
         </select>
       </div>
+      <button class="btn-reset" onclick="resetFilters()">Reset</button>
     </div>
 
     <div class="legend">
@@ -478,11 +524,11 @@
         </colgroup>
         <thead>
           <tr>
-            <th>Major</th>
-            <th>School(s)</th>
-            <th>What it&rsquo;s about</th>
-            <th>What you can do with it</th>
-            <th>Fit</th>
+            <th onclick="sortTable(0)">Major</th>
+            <th onclick="sortTable(1)">School(s)</th>
+            <th onclick="sortTable(2)">What it&rsquo;s about</th>
+            <th onclick="sortTable(3)">What you can do with it</th>
+            <th onclick="sortTable(4)">Fit</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -633,6 +679,8 @@
       holy:"holy", brandeis:"brandeis", clark:"clark", uconn:"uconn", uvm:"uvm"
     };
 
+    let sortCol = -1, sortAsc = true;
+
     function buildRow(r) {
       const pills = r.schools.map((s,i) =>
         `<span class="pill ${SCHOOL_CLASS[s]}">${r.labels[i]}</span>`
@@ -640,8 +688,10 @@
       const note = r.note
         ? `<div class="career-note">${r.note}</div>`
         : "";
+      const majorKey   = r.major.replace(/&amp;/g, '&');
+      const schoolsKey = r.schools.join(",");
       return `
-        <tr data-schools="${r.schools.join(",")}" data-fit="${r.fit}">
+        <tr data-schools="${schoolsKey}" data-fit="${r.fit}" data-major="${majorKey}" data-about="${r.about.substring(0,120)}" data-careers="${r.careers.substring(0,120)}">
           <td class="col-major">${r.major}</td>
           <td class="col-schools">${pills}</td>
           <td class="col-about">${r.about}</td>
@@ -656,15 +706,52 @@
     }
 
     function filterTable() {
-      const school = document.getElementById("schoolFilter").value;
-      const fit    = document.getElementById("fitFilter").value;
+      const school  = document.getElementById("schoolFilter").value;
+      const fit     = document.getElementById("fitFilter").value;
+      const search  = document.getElementById("searchInput").value.trim().toLowerCase();
       document.querySelectorAll("#tableBody tr").forEach(tr => {
-        const schools  = tr.dataset.schools;
-        const rowFit   = tr.dataset.fit;
+        const schools    = tr.dataset.schools || '';
+        const rowFit     = tr.dataset.fit || '';
+        const text       = tr.textContent.toLowerCase();
         const showSchool = school === "all" || schools.split(",").includes(school);
         const showFit    = fit === "all" || rowFit === fit;
-        tr.classList.toggle("hidden", !(showSchool && showFit));
+        const showSearch = !search || text.includes(search);
+        tr.classList.toggle("hidden", !(showSchool && showFit && showSearch));
       });
+      updateCount();
+    }
+
+    function resetFilters() {
+      document.getElementById("searchInput").value = '';
+      document.getElementById("schoolFilter").value = 'all';
+      document.getElementById("fitFilter").value = 'all';
+      sortCol = -1;
+      sortAsc = true;
+      document.querySelectorAll('thead th').forEach(th => th.classList.remove('sort-asc', 'sort-desc'));
+      renderAll();
+    }
+
+    function sortTable(col) {
+      const ths = document.querySelectorAll('thead th');
+      if (sortCol === col) {
+        sortAsc = !sortAsc;
+      } else {
+        sortCol = col;
+        sortAsc = true;
+      }
+      ths.forEach(function(th, i) {
+        th.classList.remove('sort-asc', 'sort-desc');
+        if (i === col) th.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
+      });
+      const tbody = document.getElementById('tableBody');
+      const trows = Array.from(tbody.querySelectorAll('tr'));
+      const keys  = ['major', 'schools', 'about', 'careers', 'fit'];
+      trows.sort(function(a, b) {
+        const av = a.dataset[keys[col]] || '';
+        const bv = b.dataset[keys[col]] || '';
+        return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+      });
+      trows.forEach(function(r) { tbody.appendChild(r); });
       updateCount();
     }
 
