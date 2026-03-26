@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jocelyne's Major List — Greg Berry</title>
+  <style>
+    /* ─── Reset & Base ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #0D2B56;
+      --red:      #BD3039;
+      --red-dark: #951F2B;
+      --white:    #FFFFFF;
+      --off-white:#F5F5F5;
+      --gray:     #555555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #222;
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ─── Header / Nav ───────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 4px solid var(--red);
+    }
+
+    nav {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-brand span { color: var(--red); }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--red); }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      background: var(--navy);
+      border-top: 3px solid var(--red);
+      min-width: 210px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      z-index: 200;
+      list-style: none;
+      padding: 0.4rem 0;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+
+    .nav-dropdown-menu li a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+      text-transform: none;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      opacity: 0.85;
+    }
+
+    .nav-dropdown-menu li a:hover {
+      opacity: 1;
+      color: var(--red);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* ─── Page Hero ──────────────────────────────────────────── */
+    .page-hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 40px,
+        rgba(189, 48, 57, 0.06) 40px,
+        rgba(189, 48, 57, 0.06) 41px
+      );
+      pointer-events: none;
+    }
+
+    .page-hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+
+    .page-hero-badge {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+
+    .page-hero h1 span { color: var(--red); }
+
+    .page-hero p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      opacity: 0.75;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ─── Main Content ───────────────────────────────────────── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ─── Filter bar ─────────────────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .filter-btn {
+      font-size: 11px;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 5px 12px;
+      border-radius: 3px;
+      border: 1px solid #bbb;
+      background: var(--white);
+      color: var(--gray);
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+
+    .filter-btn.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ─── Table ──────────────────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    col.c1 { width: 15%; }
+    col.c2 { width: 17%; }
+    col.c3 { width: 32%; }
+    col.c4 { width: 26%; }
+    col.c5 { width: 10%; }
+
+    th {
+      text-align: left;
+      padding: 8px 10px;
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--white);
+      background: var(--navy);
+      border-bottom: 3px solid var(--red);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #ececec;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    tbody tr:hover td { background: #f9f6f6; }
+
+    tr.hidden { display: none; }
+
+    .section-row td {
+      background: var(--off-white);
+      font-weight: 700;
+      font-size: 10px;
+      padding: 6px 10px;
+      color: var(--navy);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-left: 4px solid var(--red);
+    }
+
+    /* ─── Badges ─────────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 3px;
+      white-space: nowrap;
+      margin: 1px 2px 1px 0;
+    }
+
+    .b-curry   { background: #ede9fe; color: #5b21b6; }
+    .b-dean    { background: #d1fae5; color: #065f46; }
+    .b-fsu     { background: #dbeafe; color: #1e40af; }
+    .b-massbay { background: #fef3c7; color: #92400e; }
+    .b-mitchell{ background: #fce7f3; color: #9d174d; }
+    .b-une     { background: #dcfce7; color: #14532d; }
+
+    /* ─── Fit Pills ──────────────────────────────────────────── */
+    .fit-strong, .fit-possible, .fit-worth {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 3px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .fit-strong   { background: #d1fae5; color: #065f46; }
+    .fit-possible { background: #dbeafe; color: #1e40af; }
+    .fit-worth    { background: #f3f4f6; color: #4b5563; }
+
+    .major-name { font-weight: 700; font-size: 12px; color: var(--navy); }
+    .desc, .careers { font-size: 11.5px; color: #444; }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 4px solid var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    footer a { color: var(--red); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <nav>
+      <a class="nav-brand" href="index.html">Greg <span>Berry</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Projects</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="JocelyneMajorList.html">Jocelyne's Major List</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.linkedin.com/in/gberry/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-badge">College Research</div>
+      <h1>Jocelyne's <span>Major List</span></h1>
+      <p>Majors and career outcomes across Curry, Dean, FSU, MassBay, Mitchell, and UNE — filtered by fit and school.</p>
+    </div>
+  </div>
+
+  <!-- ── Main ── -->
+  <main>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterTable('all', this)">All majors</button>
+      <button class="filter-btn" onclick="filterTable('strong', this)">Strong fit</button>
+      <button class="filter-btn" onclick="filterTable('possible', this)">Possible fit</button>
+      <button class="filter-btn" onclick="filterTable('worth', this)">Worth knowing</button>
+      <button class="filter-btn" onclick="filterTable('curry', this)">Curry</button>
+      <button class="filter-btn" onclick="filterTable('dean', this)">Dean</button>
+      <button class="filter-btn" onclick="filterTable('fsu', this)">FSU</button>
+      <button class="filter-btn" onclick="filterTable('massbay', this)">MassBay</button>
+      <button class="filter-btn" onclick="filterTable('mitchell', this)">Mitchell</button>
+      <button class="filter-btn" onclick="filterTable('une', this)">UNE</button>
+    </div>
+
+    <table>
+      <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"></colgroup>
+      <thead>
+        <tr>
+          <th>Major</th>
+          <th>School(s)</th>
+          <th>What it's about</th>
+          <th>What you can do with it</th>
+          <th>Fit</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+
+        <tr class="section-row"><td colspan="5">Strong fit — storytelling, media, creativity, culture, writing</td></tr>
+
+        <tr data-fit="strong" data-schools="curry dean fsu">
+          <td><span class="major-name">Communication / Media and Communication Arts</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-dean">Dean</span><span class="badge b-fsu">FSU</span></td>
+          <td class="desc">How people share ideas through media, writing, and storytelling. Covers journalism, social media, public relations, and how cultural messages get made and spread.</td>
+          <td class="careers">Social media manager, content writer, communications coordinator, PR assistant, journalist, marketing associate, media producer, nonprofit communications staff.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="mitchell">
+          <td><span class="major-name">Digital Communication</span></td>
+          <td><span class="badge b-mitchell">Mitchell</span></td>
+          <td class="desc">Content creation, media storytelling, and digital platforms. You study how media shapes culture and how to produce your own.</td>
+          <td class="careers">Digital content creator, social media strategist, podcast or video producer, community manager, brand communications associate, copywriter.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="curry fsu">
+          <td><span class="major-name">English</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-fsu">FSU</span></td>
+          <td class="desc">Reading, writing, and understanding how stories work. You analyze literature, film, and culture while developing strong writing skills.</td>
+          <td class="careers">Writer, editor, communications staff, content strategist, teacher (with licensure), publishing assistant, grant writer, technical writer, UX writer.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="une">
+          <td><span class="major-name">Creative Writing</span></td>
+          <td><span class="badge b-une">UNE</span></td>
+          <td class="desc">Fiction, essays, and screenplays in small workshop settings. Everyone reads and responds to each other's work throughout the program.</td>
+          <td class="careers">Author, screenwriter, content writer, copywriter, editor, communications professional, writing instructor. Writing skills transfer into almost any career.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="fsu">
+          <td><span class="major-name">Fashion Design and Retailing / Apparel and Textile Science</span></td>
+          <td><span class="badge b-fsu">FSU</span></td>
+          <td class="desc">Combines the creative side of fashion with how clothing gets designed, produced, and sold. Hands-on and visual throughout.</td>
+          <td class="careers">Fashion buyer, retail merchandiser, visual merchandiser, fashion stylist, product developer, apparel designer, trend analyst, fashion marketing coordinator.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="fsu">
+          <td><span class="major-name">Communication Arts</span></td>
+          <td><span class="badge b-fsu">FSU</span></td>
+          <td class="desc">FSU's blend of visual communication, media production, and storytelling. More hands-on and design-oriented than a traditional communications major.</td>
+          <td class="careers">Graphic designer, visual content producer, media coordinator, UX/UI designer, brand designer, advertising associate, digital media specialist.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="massbay">
+          <td><span class="major-name">Communication (A.A.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Two-year associate degree covering the basics of media, writing, and communication. Designed to transfer to a four-year program.</td>
+          <td class="careers">Entry-level communications or media assistant roles, or transfer pathway to communications, English, or media studies at a four-year school.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="massbay">
+          <td><span class="major-name">English (A.A.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Two-year degree in reading, writing, and literature. Transfers well to four-year programs in English, communications, or education.</td>
+          <td class="careers">Transfer pathway to a four-year English or humanities degree. Entry-level writing, tutoring, or editorial assistant roles while continuing your education.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="massbay">
+          <td><span class="major-name">Liberal Arts (A.A.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">A broad foundation in writing, humanities, and social sciences. A flexible starting point that transfers easily to a four-year school.</td>
+          <td class="careers">Primarily a transfer degree — it opens the door to almost any four-year major. Career outcomes depend on the direction taken after transfer.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="fsu une">
+          <td><span class="major-name">Art (Studio Art)</span></td>
+          <td><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">Hands-on art making — drawing, painting, graphic arts, and visual design. Project-based learning throughout.</td>
+          <td class="careers">Graphic designer, illustrator, art educator, gallery assistant, visual content creator, set or prop designer, freelance artist, art director (with experience).</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="fsu">
+          <td><span class="major-name">Art History</span></td>
+          <td><span class="badge b-fsu">FSU</span></td>
+          <td class="desc">How art, design, and visual culture have changed across history and societies. Writing-heavy and humanities-focused.</td>
+          <td class="careers">Museum educator, gallery assistant, arts administrator, archivist, art writer or critic, auction house assistant, cultural programming coordinator.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="dean">
+          <td><span class="major-name">Arts Leadership</span></td>
+          <td><span class="badge b-dean">Dean</span></td>
+          <td class="desc">How the arts are managed, funded, and brought to communities. Covers nonprofit arts organizations, event planning, and cultural programming.</td>
+          <td class="careers">Arts administrator, nonprofit program coordinator, event producer, development associate, cultural center manager, community arts educator, gallery or venue manager.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="dean">
+          <td><span class="major-name">Theatre (Acting or Production/Design)</span></td>
+          <td><span class="badge b-dean">Dean</span></td>
+          <td class="desc">Performance, directing, and production design. Dean is nationally recognized for its performing arts programs.</td>
+          <td class="careers">Actor, stage manager, production designer, props or costume coordinator, arts educator, community theater director, entertainment production assistant.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="fsu une">
+          <td><span class="major-name">History</span></td>
+          <td><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">How people, cultures, and societies have changed over time. Reading and writing focused. Jocelyne's World History Honors grade suggests this is a real strength area.</td>
+          <td class="careers">Museum educator, archivist, researcher, journalist, policy analyst, teacher (with licensure), nonprofit program staff. Graduate school opens doors in law, public policy, or academic history.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr data-fit="strong" data-schools="fsu une">
+          <td><span class="major-name">Global Studies / International Studies</span></td>
+          <td><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">How cultures and societies interact across the world — through history, media, politics, and trade. Writing and reading intensive.</td>
+          <td class="careers">Nonprofit or NGO program staff, international relations coordinator, cultural affairs associate, journalist, government or policy work. Graduate study in international affairs or law common.</td>
+          <td><span class="fit-strong">Strong fit</span></td>
+        </tr>
+
+        <tr class="section-row"><td colspan="5">Possible fit — worth exploring with the right support</td></tr>
+
+        <tr data-fit="possible" data-schools="curry dean fsu mitchell une">
+          <td><span class="major-name">Psychology</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-dean">Dean</span><span class="badge b-fsu">FSU</span><span class="badge b-mitchell">Mitchell</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">How people think, feel, and behave. Writing-heavy at the intro level. The research methods component requires some statistics.</td>
+          <td class="careers">Human services worker, case manager, mental health technician, HR associate, research assistant, school counselor (with further education). Licensed therapist or psychologist roles require graduate school.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="curry fsu une">
+          <td><span class="major-name">Sociology</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">How societies, communities, and groups work — culture, identity, inequality, and how things change over time. Reading and writing focused.</td>
+          <td class="careers">Community organizer, nonprofit program staff, social services coordinator, policy researcher, HR associate, journalist, educator. Often paired with graduate work in social work or public policy.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="curry fsu mitchell une">
+          <td><span class="major-name">Education (Elementary or Early Childhood)</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-fsu">FSU</span><span class="badge b-mitchell">Mitchell</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">Prepares you to work with children in classroom settings. Hands-on, relationship-driven, and structured. Leads to a teaching license in Massachusetts.</td>
+          <td class="careers">Elementary school teacher, preschool or daycare director, early intervention specialist, instructional aide, special education assistant. One of the most stable and in-demand career paths available.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="massbay">
+          <td><span class="major-name">Liberal Arts: Human Services (A.A.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Working with people in community, social service, and advocacy settings. Hands-on and people-centered.</td>
+          <td class="careers">Entry-level community service, social services aide, residential support staff, youth program coordinator. Transfers to four-year human services or social work programs.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="massbay">
+          <td><span class="major-name">Liberal Arts: Psychology/Sociology (A.A.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Two-year degree exploring human behavior, social systems, and culture. Designed to transfer to a four-year psychology or sociology program.</td>
+          <td class="careers">Transfer pathway to four-year psychology, sociology, counseling, or social work programs. Entry-level human services work while completing the degree.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="massbay">
+          <td><span class="major-name">Liberal Arts: Early Childhood Education (A.A.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Child development and early education. Practical and structured. Transfers into a four-year education degree.</td>
+          <td class="careers">Preschool teacher or aide, daycare staff, early intervention support. Transfers to a four-year education program for full teaching licensure.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="fsu une">
+          <td><span class="major-name">Food and Nutrition / Food Science</span></td>
+          <td><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">Nutrition, food systems, and health. Applied and hands-on. FSU is nationally known for this program. Science is involved.</td>
+          <td class="careers">Registered dietitian (with supervised practice), food scientist, nutrition educator, public health nutritionist, food industry quality specialist, wellness coordinator.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="dean fsu massbay">
+          <td><span class="major-name">Hospitality and Tourism Management</span></td>
+          <td><span class="badge b-dean">Dean</span><span class="badge b-fsu">FSU</span><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Event planning, tourism, hotel management, and customer experience. Creative and people-centered with real-world applications.</td>
+          <td class="careers">Hotel or resort manager, event coordinator, travel consultant, restaurant manager, venue operations staff, tourism marketing associate, convention services coordinator.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="fsu mitchell">
+          <td><span class="major-name">Liberal Studies</span></td>
+          <td><span class="badge b-fsu">FSU</span><span class="badge b-mitchell">Mitchell</span></td>
+          <td class="desc">A student-designed major drawing from multiple disciplines. At FSU, it can be built around a unique combination of interests.</td>
+          <td class="careers">Depends on how the major is built. With a media and culture focus, outcomes overlap with communications, arts administration, or education. Often a launchpad toward graduate school.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="fsu une">
+          <td><span class="major-name">Environmental Studies</span></td>
+          <td><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">The natural world, sustainability, and how humans interact with the environment. Science-heavy. More realistic at FSU given Jocelyne's current profile.</td>
+          <td class="careers">Environmental educator, conservation program staff, sustainability coordinator, park ranger, environmental nonprofit worker, land use planner, community garden or urban agriculture roles.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr data-fit="possible" data-schools="fsu une">
+          <td><span class="major-name">Public Health</span></td>
+          <td><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">How communities stay healthy — health education, policy, and prevention. Less clinical than nursing. People-centered and writing-friendly.</td>
+          <td class="careers">Health educator, community outreach coordinator, nonprofit wellness coordinator, health communications associate. Graduate school opens doors to epidemiology, policy, and administration.</td>
+          <td><span class="fit-possible">Possible fit</span></td>
+        </tr>
+
+        <tr class="section-row"><td colspan="5">Worth knowing about — available and realistic, less aligned with her core interests</td></tr>
+
+        <tr data-fit="worth" data-schools="curry dean fsu mitchell une massbay">
+          <td><span class="major-name">Business Administration / Business Management</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-dean">Dean</span><span class="badge b-fsu">FSU</span><span class="badge b-mitchell">Mitchell</span><span class="badge b-une">UNE</span><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">The broad foundation for running organizations — marketing, management, and finance. Math is involved. Available at all six schools.</td>
+          <td class="careers">Management trainee, marketing coordinator, retail or operations manager, HR assistant, sales associate, small business owner. One of the most versatile degrees available.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="curry fsu une mitchell">
+          <td><span class="major-name">Biology</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span><span class="badge b-mitchell">Mitchell</span></td>
+          <td class="desc">The study of living organisms. Science and math heavy. Connects to horticulture broadly but demands a different academic skill set.</td>
+          <td class="careers">Lab technician, research assistant, environmental scientist, healthcare worker (with further education), science educator. Most research-level roles require graduate school.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="curry dean fsu mitchell une massbay">
+          <td><span class="major-name">Criminal Justice / Criminology</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-dean">Dean</span><span class="badge b-fsu">FSU</span><span class="badge b-mitchell">Mitchell</span><span class="badge b-une">UNE</span><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Law enforcement, justice systems, and social policy. Available at all six schools. Does not connect closely to Jocelyne's interests.</td>
+          <td class="careers">Law enforcement officer, corrections officer, probation or parole officer, victim advocate, court coordinator, social services worker. Graduate study opens doors in law or public policy.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="curry dean fsu mitchell une">
+          <td><span class="major-name">Exercise Science / Kinesiology / Sport Management</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-dean">Dean</span><span class="badge b-fsu">FSU</span><span class="badge b-mitchell">Mitchell</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">Sport management covers the business of athletics; exercise science is more clinical. Very popular at Dean and Mitchell.</td>
+          <td class="careers">Athletic director, sports marketing associate, fitness trainer, recreation coordinator, team operations staff, sports event planner, physical therapy aide (exercise science track).</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="curry fsu mitchell une">
+          <td><span class="major-name">Nursing</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-fsu">FSU</span><span class="badge b-mitchell">Mitchell</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">A rigorous clinical program preparing students to become registered nurses. Heavy on science and math.</td>
+          <td class="careers">Registered nurse across hospital, clinic, school, or community settings. One of the most stable and in-demand careers available. Nurse practitioner or leadership roles with further education.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="curry fsu une massbay">
+          <td><span class="major-name">Computer Science / Information Technology</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Programming, systems, and technology problem-solving. Math-intensive. Not a natural fit given Jocelyne's current academic profile.</td>
+          <td class="careers">Software developer, systems analyst, IT support specialist, web developer, cybersecurity analyst, data analyst. Very high job demand and strong salaries across the board.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="curry fsu une">
+          <td><span class="major-name">Biochemistry / Chemistry / Environmental Science</span></td>
+          <td><span class="badge b-curry">Curry</span><span class="badge b-fsu">FSU</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">Hard science programs requiring strong math and lab science foundations. Not a realistic match for Jocelyne's current profile.</td>
+          <td class="careers">Lab researcher, environmental consultant, pharmaceutical technician, quality control scientist. Most higher-level roles require graduate school.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="curry">
+          <td><span class="major-name">Public Relations</span></td>
+          <td><span class="badge b-curry">Curry</span></td>
+          <td class="desc">How organizations communicate with the public — press releases, campaigns, and messaging strategy. Writing-forward and media-connected.</td>
+          <td class="careers">PR coordinator, communications associate, media relations specialist, brand manager, corporate communications staff, agency account coordinator.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="massbay">
+          <td><span class="major-name">Business Administration / Accounting / Marketing (A.S.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">MassBay's business associate degrees. Accounting is math-heavy; marketing and general business are more accessible. All transfer to four-year programs.</td>
+          <td class="careers">Entry-level business, retail, or marketing roles. Accounting track leads to bookkeeping or accounting technician work. All transfer to a four-year business degree.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="massbay">
+          <td><span class="major-name">Biotechnology / Life Sciences / Environmental Sciences (A.S.)</span></td>
+          <td><span class="badge b-massbay">MassBay</span></td>
+          <td class="desc">Science and lab-focused two-year programs at MassBay. Not a strong academic fit for Jocelyne right now.</td>
+          <td class="careers">Lab assistant, environmental technician, biotech manufacturing support. Transfer pathway to four-year biology or environmental science programs.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="une">
+          <td><span class="major-name">Aquaculture, Aquarium Science, and Aquaponics</span></td>
+          <td><span class="badge b-une">UNE</span></td>
+          <td class="desc">The only B.S. program of its kind in the U.S. Covers care of aquatic animals in zoos and aquariums, plus freshwater and marine cultivation. Hands-on and coastal. Science and math requirements are real.</td>
+          <td class="careers">Aquarium curator or educator, zoo aquatics staff, fish hatchery manager, marine aquaculture technician, aquaponics farm operator. Graduates can sit for the AALSO professional certification exam before leaving school.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="une">
+          <td><span class="major-name">Marine Biology / Marine Sciences</span></td>
+          <td><span class="badge b-une">UNE</span></td>
+          <td class="desc">Science-intensive study of ocean ecosystems and marine life. UNE's coastal campus makes it a distinctive setting for this program.</td>
+          <td class="careers">Marine biologist, fisheries scientist, oceanographic researcher, environmental consultant, wildlife biologist, marine educator. Graduate school typical for research roles.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="mitchell">
+          <td><span class="major-name">Marine and Environmental Science</span></td>
+          <td><span class="badge b-mitchell">Mitchell</span></td>
+          <td class="desc">A hands-on science program at Mitchell's waterfront New London campus. More accessible than UNE's version but still science-driven.</td>
+          <td class="careers">Environmental technician, conservation aide, marine education center staff, sustainability coordinator, coastal resource management. Graduate school typical for research-level work.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+        <tr data-fit="worth" data-schools="mitchell une">
+          <td><span class="major-name">Applied Exercise Science / Health Sciences</span></td>
+          <td><span class="badge b-mitchell">Mitchell</span><span class="badge b-une">UNE</span></td>
+          <td class="desc">Mitchell's health-focused programs. Applied Exercise Science covers fitness and human movement; Health Sciences is a broader pre-health track.</td>
+          <td class="careers">Personal trainer, fitness coordinator, health and wellness coach, physical therapy aide, pre-health preparation for graduate programs in PT, OT, or physician assistant.</td>
+          <td><span class="fit-worth">Worth knowing</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>&copy; 2026 Greg Berry &mdash; Framingham, MA &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/gberry/" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script>
+    function filterTable(filter, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const rows = document.querySelectorAll('#tableBody tr');
+      rows.forEach(row => {
+        if (row.classList.contains('section-row')) { row.classList.remove('hidden'); return; }
+        const fit     = row.dataset.fit     || '';
+        const schools = row.dataset.schools || '';
+        if (filter === 'all') {
+          row.classList.remove('hidden');
+        } else if (['strong','possible','worth'].includes(filter)) {
+          row.classList.toggle('hidden', fit !== filter);
+        } else {
+          row.classList.toggle('hidden', !schools.includes(filter));
+        }
+      });
+      document.querySelectorAll('.section-row').forEach(section => {
+        let next = section.nextElementSibling;
+        let hasVisible = false;
+        while (next && !next.classList.contains('section-row')) {
+          if (!next.classList.contains('hidden')) hasVisible = true;
+          next = next.nextElementSibling;
+        }
+        section.classList.toggle('hidden', !hasVisible);
+      });
+    }
+  </script>
+
+</body>
+</html>

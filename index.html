@@ -80,6 +80,41 @@
       color: var(--red);
     }
 
+    /* ─── Dropdown ───────────────────────────────────────────── */
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      background: var(--navy);
+      border-top: 3px solid var(--red);
+      min-width: 210px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      z-index: 200;
+      list-style: none;
+      padding: 0.4rem 0;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+
+    .nav-dropdown-menu li a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+      text-transform: none;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      opacity: 0.85;
+    }
+
+    .nav-dropdown-menu li a:hover {
+      opacity: 1;
+      color: var(--red);
+      background: rgba(255,255,255,0.05);
+    }
+
     /* ─── Hero ───────────────────────────────────────────────── */
     #hero {
       background: var(--navy);
@@ -326,6 +361,12 @@
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Projects</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="JocelyneMajorList.html">Jocelyne's Major List</a></li>
+          </ul>
+        </li>
         <li><a href="https://www.linkedin.com/in/gberry/" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
     </nav>
@@ -363,22 +404,19 @@
             bridging the gap between technical teams and organizational leadership —
             delivering results through planning, communication, and execution.
           </p>
-          <p>
-            Outside of work, I'm involved in community service, including past leadership
-            on the Executive Board of the Knox Trail Council, BSA.
-          </p>
         </div>
 
         <div class="about-details">
           <h3>Highlights</h3>
           <ul class="detail-list">
             <li>MBA &mdash; Boston University, School of Management</li>
-            <li>Current: IT at Mass Audubon, Framingham MA</li>
+            <li>Current: Senior Director of Information Technology at Mass Audubon, Lincoln, MA</li>
+            <li>Salesforce Administration</li>
+            <li>Strong IT Leadership Skills</li>
             <li>ITIL Foundations Certified</li>
             <li>VMware vSphere Administration</li>
             <li>EMC NAS &amp; Storage Operations</li>
             <li>DHS/FEMA Information Security</li>
-            <li>BSA Knox Trail Council Executive Board Member</li>
           </ul>
 
           <div class="skills-wrap">
