@@ -600,7 +600,6 @@
       <button class="btn-reset" onclick="resetFilters()">Reset</button>
     </div>
 
-    <p class="row-count" id="totalStats"></p>
     <p class="row-count" id="rowCount"></p>
 
     <div class="table-wrap">
@@ -666,10 +665,6 @@
 
     function renderAll() {
       document.getElementById('tableBody').innerHTML = ROWS.map(buildRow).join('');
-      const totalMajors = ROWS.length;
-      const totalSchools = new Set(ROWS.flatMap(function(r) { return r.Schools; })).size;
-      document.getElementById('totalStats').textContent =
-        totalMajors + ' majors across ' + totalSchools + ' schools';
       updateCount();
     }
 
@@ -709,6 +704,9 @@
     }
 
     document.addEventListener('click', closeAllDropdowns);
+    document.querySelectorAll('.ms-dropdown').forEach(function(d) {
+      d.addEventListener('click', function(e) { e.stopPropagation(); });
+    });
 
     document.querySelectorAll('.ms-dropdown input[type="checkbox"]').forEach(function(cb) {
       cb.addEventListener('change', function() {
@@ -768,10 +766,16 @@
     }
 
     function updateCount() {
-      const total   = document.querySelectorAll('#tableBody tr').length;
-      const visible = document.querySelectorAll('#tableBody tr:not(.hidden)').length;
+      const total        = document.querySelectorAll('#tableBody tr').length;
+      const visibleRows  = document.querySelectorAll('#tableBody tr:not(.hidden)');
+      const visibleCount = visibleRows.length;
+      const visibleSchools = new Set();
+      visibleRows.forEach(function(tr) {
+        tr.dataset.school.split('|').forEach(function(s) { if (s) visibleSchools.add(s); });
+      });
+      const totalSchools = new Set(ROWS.flatMap(function(r) { return r.Schools; })).size;
       document.getElementById('rowCount').textContent =
-        'Showing ' + visible + ' of ' + total + ' majors';
+        'Showing ' + visibleCount + ' of ' + total + ' majors at ' + visibleSchools.size + ' of ' + totalSchools + ' schools';
     }
 
     renderAll();
