@@ -537,24 +537,25 @@
       <button class="btn-reset" onclick="resetFilters()">Reset</button>
     </div>
 
+    <p class="row-count" id="totalStats"></p>
     <p class="row-count" id="rowCount"></p>
 
     <div class="table-wrap">
       <table id="majorsTable">
         <colgroup>
           <col class="col-major" />
-          <col class="col-school" />
           <col class="col-category" />
           <col class="col-desc" />
           <col class="col-careers" />
+          <col class="col-school" />
         </colgroup>
         <thead>
           <tr>
             <th onclick="sortTable(0)">Major</th>
-            <th onclick="sortTable(1)">School</th>
-            <th onclick="sortTable(2)">Category</th>
-            <th onclick="sortTable(3)">Description</th>
-            <th onclick="sortTable(4)">Careers</th>
+            <th onclick="sortTable(1)">Category</th>
+            <th onclick="sortTable(2)">Description</th>
+            <th onclick="sortTable(3)">Careers</th>
+            <th onclick="sortTable(4)">School</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -593,15 +594,19 @@
         ' data-desc="' + esc(r.Description) + '"' +
         ' data-careers="' + esc(r.Careers) + '">' +
         '<td class="col-major">' + r['Major Name'] + '</td>' +
-        '<td class="col-school">' + r.Schools.map(pill).join(' ') + '</td>' +
         '<td class="col-category">' + r.Category + '</td>' +
         '<td class="col-desc">' + r.Description + '</td>' +
         '<td class="col-careers">' + r.Careers + '</td>' +
+        '<td class="col-school">' + r.Schools.map(pill).join(' ') + '</td>' +
         '</tr>';
     }
 
     function renderAll() {
       document.getElementById('tableBody').innerHTML = ROWS.map(buildRow).join('');
+      const totalMajors = ROWS.length;
+      const totalSchools = new Set(ROWS.flatMap(function(r) { return r.Schools; })).size;
+      document.getElementById('totalStats').textContent =
+        totalMajors + ' majors across ' + totalSchools + ' schools';
       updateCount();
     }
 
@@ -642,7 +647,7 @@
       });
       const tbody = document.getElementById('tableBody');
       const trows = Array.from(tbody.querySelectorAll('tr'));
-      const keys  = ['major','school','cat','desc','careers'];
+      const keys  = ['major','cat','desc','careers','school'];
       trows.sort(function(a, b) {
         const av = a.dataset[keys[col]] || '';
         const bv = b.dataset[keys[col]] || '';
