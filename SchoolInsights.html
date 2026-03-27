@@ -202,7 +202,7 @@
     .jump-nav {
       background: var(--white);
       border-bottom: 1px solid var(--border);
-      padding: 0.8rem 1.5rem;
+      padding: 0.65rem 1.5rem;
       position: sticky;
       top: 64px;
       z-index: 50;
@@ -212,9 +212,8 @@
       max-width: 960px;
       margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem 0.5rem;
       align-items: center;
+      gap: 0.75rem;
     }
 
     .jump-nav-label {
@@ -223,23 +222,25 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gray);
-      margin-right: 0.3rem;
+      white-space: nowrap;
     }
 
-    .jump-nav a {
-      font-size: 0.75rem;
+    .jump-nav select {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
       color: var(--navy);
-      text-decoration: none;
-      padding: 0.15rem 0.5rem;
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: 2px;
-      transition: background 0.15s, color 0.15s;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      flex: 1;
+      max-width: 320px;
     }
 
-    .jump-nav a:hover {
-      background: var(--navy);
-      color: var(--white);
-      border-color: var(--navy);
+    .jump-nav select:focus {
+      outline: 2px solid var(--navy);
+      outline-offset: 1px;
     }
 
     /* ─── Main Content ────────────────────────────────────────────── */
@@ -255,6 +256,7 @@
       border-radius: 4px;
       margin-bottom: 2rem;
       overflow: hidden;
+      scroll-margin-top: 118px;
     }
 
     .school-card-header {
@@ -407,48 +409,51 @@
   <div class="jump-nav">
     <div class="jump-nav-inner">
       <span class="jump-nav-label">Jump to:</span>
-      <a href="#amherst">Amherst</a>
-      <a href="#babson">Babson</a>
-      <a href="#bates">Bates</a>
-      <a href="#bennington">Bennington</a>
-      <a href="#bentley">Bentley</a>
-      <a href="#boston-college">BC</a>
-      <a href="#boston-university">BU</a>
-      <a href="#bowdoin">Bowdoin</a>
-      <a href="#brandeis">Brandeis</a>
-      <a href="#brown">Brown</a>
-      <a href="#bryant">Bryant</a>
-      <a href="#clark">Clark</a>
-      <a href="#colby">Colby</a>
-      <a href="#connecticut">Conn</a>
-      <a href="#dean">Dean</a>
-      <a href="#emerson">Emerson</a>
-      <a href="#endicott">Endicott</a>
-      <a href="#fairfield">Fairfield</a>
-      <a href="#fordham">Fordham</a>
-      <a href="#framingham">FSU</a>
-      <a href="#harvard">Harvard</a>
-      <a href="#holy-cross">Holy Cross</a>
-      <a href="#husson">Husson</a>
-      <a href="#jwu">J&amp;W</a>
-      <a href="#keene">Keene</a>
-      <a href="#lasell">Lasell</a>
-      <a href="#lesley">Lesley</a>
-      <a href="#maine-maritime">Maine Maritime</a>
-      <a href="#massart">MassArt</a>
-      <a href="#mcla">MCLA</a>
-      <a href="#mit">MIT</a>
-      <a href="#mass-maritime">Mass Maritime</a>
-      <a href="#mitchell">Mitchell</a>
-      <a href="#northeastern">Northeastern</a>
-      <a href="#quinnipiac">Quinnipiac</a>
-      <a href="#roger-williams">Roger Williams</a>
-      <a href="#smith">Smith</a>
-      <a href="#uconn">UConn</a>
-      <a href="#umass-amherst">UMass Amherst</a>
-      <a href="#umass-dartmouth">UMass Dartmouth</a>
-      <a href="#u-maine">U Maine</a>
-      <a href="#une">UNE</a>
+      <select onchange="if(this.value){document.getElementById(this.value).scrollIntoView({behavior:'smooth',block:'start'});this.value='';}">
+        <option value="">— Select a school —</option>
+        <option value="amherst">Amherst College</option>
+        <option value="babson">Babson College</option>
+        <option value="bates">Bates College</option>
+        <option value="bennington">Bennington College</option>
+        <option value="bentley">Bentley University</option>
+        <option value="boston-college">Boston College</option>
+        <option value="boston-university">Boston University</option>
+        <option value="bowdoin">Bowdoin College</option>
+        <option value="brandeis">Brandeis University</option>
+        <option value="brown">Brown University</option>
+        <option value="bryant">Bryant University</option>
+        <option value="clark">Clark University</option>
+        <option value="colby">Colby College</option>
+        <option value="connecticut">Connecticut College</option>
+        <option value="dean">Dean College</option>
+        <option value="emerson">Emerson College</option>
+        <option value="endicott">Endicott College</option>
+        <option value="fairfield">Fairfield University</option>
+        <option value="fordham">Fordham University</option>
+        <option value="framingham">Framingham State University</option>
+        <option value="harvard">Harvard College</option>
+        <option value="holy-cross">Holy Cross</option>
+        <option value="husson">Husson University</option>
+        <option value="jwu">Johnson &amp; Wales University</option>
+        <option value="keene">Keene State College</option>
+        <option value="lasell">Lasell University</option>
+        <option value="lesley">Lesley University</option>
+        <option value="maine-maritime">Maine Maritime Academy</option>
+        <option value="massart">MassArt</option>
+        <option value="mcla">MCLA</option>
+        <option value="mit">MIT</option>
+        <option value="mass-maritime">Massachusetts Maritime Academy</option>
+        <option value="mitchell">Mitchell College</option>
+        <option value="northeastern">Northeastern University</option>
+        <option value="quinnipiac">Quinnipiac University</option>
+        <option value="roger-williams">Roger Williams University</option>
+        <option value="smith">Smith College</option>
+        <option value="uconn">UConn</option>
+        <option value="umass-amherst">UMass Amherst</option>
+        <option value="umass-dartmouth">UMass Dartmouth</option>
+        <option value="u-maine">University of Maine</option>
+        <option value="une">University of New England</option>
+      </select>
     </div>
   </div>
 
