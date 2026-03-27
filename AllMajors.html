@@ -222,22 +222,81 @@
       background-position: right 8px center;
     }
 
-    select[multiple] {
-      padding: 0;
-      background-image: none;
-      min-height: 80px;
-      height: auto;
-      cursor: default;
+    /* ─── Custom Multi-select Dropdown ─────────────────────────────── */
+    .multiselect {
+      position: relative;
     }
 
-    select[multiple] option { padding: 4px 10px; }
+    .ms-btn {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      padding: 0.4rem 2rem 0.4rem 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: var(--white);
+      color: #222;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      white-space: nowrap;
+      position: relative;
+      min-width: 150px;
+      text-align: left;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23555' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+    }
 
-    .hint {
+    .ms-btn:focus { outline: none; border-color: var(--navy); }
+    .ms-btn.open  { border-color: var(--navy); }
+
+    .ms-btn .ms-count {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
       font-size: 0.68rem;
-      color: var(--gray);
-      opacity: 0.8;
-      display: block;
-      margin-top: 3px;
+      font-weight: bold;
+      border-radius: 100px;
+      padding: 1px 6px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    .ms-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 3px);
+      left: 0;
+      background: var(--white);
+      border: 1px solid #ccc;
+      border-top: 3px solid var(--navy);
+      border-radius: 0 0 3px 3px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      z-index: 300;
+      min-width: 200px;
+      max-height: 280px;
+      overflow-y: auto;
+      padding: 0.3rem 0;
+    }
+
+    .ms-dropdown.open { display: block; }
+
+    .ms-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .ms-option:hover { background: var(--off-white); }
+
+    .ms-option input[type="checkbox"] {
+      accent-color: var(--navy);
+      cursor: pointer;
+      flex-shrink: 0;
     }
 
     .search-input {
@@ -467,72 +526,76 @@
         <input type="text" id="searchInput" class="search-input" placeholder="Major name, description…" oninput="filterTable()" />
       </div>
       <div class="control-group">
-        <label for="schoolFilter">School</label>
-        <select id="schoolFilter" multiple onchange="filterTable()">
-          <option value="Amherst College">Amherst College</option>
-          <option value="Babson College">Babson College</option>
-          <option value="Bates College">Bates College</option>
-          <option value="Bennington College">Bennington College</option>
-          <option value="Bentley University">Bentley University</option>
-          <option value="Boston College">Boston College</option>
-          <option value="Boston University">Boston University</option>
-          <option value="Bowdoin College">Bowdoin College</option>
-          <option value="Brandeis">Brandeis</option>
-          <option value="Brown University">Brown University</option>
-          <option value="Bryant University">Bryant University</option>
-          <option value="Clark">Clark</option>
-          <option value="Colby College">Colby College</option>
-          <option value="Connecticut College">Connecticut College</option>
-          <option value="Dean College">Dean College</option>
-          <option value="Emerson College">Emerson College</option>
-          <option value="Endicott College">Endicott College</option>
-          <option value="Fairfield University">Fairfield University</option>
-          <option value="Fordham">Fordham</option>
-          <option value="Framingham State University">Framingham State University</option>
-          <option value="Harvard College">Harvard College</option>
-          <option value="Holy Cross">Holy Cross</option>
-          <option value="Husson University">Husson University</option>
-          <option value="Johnson & Wales University">Johnson & Wales University</option>
-          <option value="Keene State College">Keene State College</option>
-          <option value="Lasell University">Lasell University</option>
-          <option value="Lesley University">Lesley University</option>
-          <option value="MIT">MIT</option>
-          <option value="Maine Maritime Academy">Maine Maritime Academy</option>
-          <option value="Massachusetts College of Art and Design">Massachusetts College of Art and Design</option>
-          <option value="Massachusetts College of Liberal Arts">Massachusetts College of Liberal Arts</option>
-          <option value="Massachusetts Maritime Academy">Massachusetts Maritime Academy</option>
-          <option value="Mitchell College">Mitchell College</option>
-          <option value="Northeastern">Northeastern</option>
-          <option value="Quinnipiac">Quinnipiac</option>
-          <option value="Roger Williams University">Roger Williams University</option>
-          <option value="Smith">Smith</option>
-          <option value="UConn">UConn</option>
-          <option value="UMass Amherst">UMass Amherst</option>
-          <option value="UMass Dartmouth">UMass Dartmouth</option>
-          <option value="UVM">UVM</option>
-          <option value="University of Maine">University of Maine</option>
-          <option value="University of New England">University of New England</option>
-          <option value="University of Rhode Island">University of Rhode Island</option>
-          <option value="University of Southern Maine">University of Southern Maine</option>
-          <option value="Vassar">Vassar</option>
-        </select>
-        <small class="hint">Ctrl/⌘+click for multiple</small>
+        <label>School</label>
+        <div class="multiselect" id="schoolFilter">
+          <button class="ms-btn" id="schoolFilterBtn" onclick="toggleDropdown('schoolFilter', event)">All Schools</button>
+          <div class="ms-dropdown" id="schoolFilterDropdown">
+            <label class="ms-option"><input type="checkbox" value="Amherst College"> Amherst College</label>
+            <label class="ms-option"><input type="checkbox" value="Babson College"> Babson College</label>
+            <label class="ms-option"><input type="checkbox" value="Bates College"> Bates College</label>
+            <label class="ms-option"><input type="checkbox" value="Bennington College"> Bennington College</label>
+            <label class="ms-option"><input type="checkbox" value="Bentley University"> Bentley University</label>
+            <label class="ms-option"><input type="checkbox" value="Boston College"> Boston College</label>
+            <label class="ms-option"><input type="checkbox" value="Boston University"> Boston University</label>
+            <label class="ms-option"><input type="checkbox" value="Bowdoin College"> Bowdoin College</label>
+            <label class="ms-option"><input type="checkbox" value="Brandeis"> Brandeis</label>
+            <label class="ms-option"><input type="checkbox" value="Brown University"> Brown University</label>
+            <label class="ms-option"><input type="checkbox" value="Bryant University"> Bryant University</label>
+            <label class="ms-option"><input type="checkbox" value="Clark"> Clark</label>
+            <label class="ms-option"><input type="checkbox" value="Colby College"> Colby College</label>
+            <label class="ms-option"><input type="checkbox" value="Connecticut College"> Connecticut College</label>
+            <label class="ms-option"><input type="checkbox" value="Dean College"> Dean College</label>
+            <label class="ms-option"><input type="checkbox" value="Emerson College"> Emerson College</label>
+            <label class="ms-option"><input type="checkbox" value="Endicott College"> Endicott College</label>
+            <label class="ms-option"><input type="checkbox" value="Fairfield University"> Fairfield University</label>
+            <label class="ms-option"><input type="checkbox" value="Fordham"> Fordham</label>
+            <label class="ms-option"><input type="checkbox" value="Framingham State University"> Framingham State University</label>
+            <label class="ms-option"><input type="checkbox" value="Harvard College"> Harvard College</label>
+            <label class="ms-option"><input type="checkbox" value="Holy Cross"> Holy Cross</label>
+            <label class="ms-option"><input type="checkbox" value="Husson University"> Husson University</label>
+            <label class="ms-option"><input type="checkbox" value="Johnson &amp; Wales University"> Johnson &amp; Wales University</label>
+            <label class="ms-option"><input type="checkbox" value="Keene State College"> Keene State College</label>
+            <label class="ms-option"><input type="checkbox" value="Lasell University"> Lasell University</label>
+            <label class="ms-option"><input type="checkbox" value="Lesley University"> Lesley University</label>
+            <label class="ms-option"><input type="checkbox" value="MIT"> MIT</label>
+            <label class="ms-option"><input type="checkbox" value="Maine Maritime Academy"> Maine Maritime Academy</label>
+            <label class="ms-option"><input type="checkbox" value="Massachusetts College of Art and Design"> Massachusetts College of Art and Design</label>
+            <label class="ms-option"><input type="checkbox" value="Massachusetts College of Liberal Arts"> Massachusetts College of Liberal Arts</label>
+            <label class="ms-option"><input type="checkbox" value="Massachusetts Maritime Academy"> Massachusetts Maritime Academy</label>
+            <label class="ms-option"><input type="checkbox" value="Mitchell College"> Mitchell College</label>
+            <label class="ms-option"><input type="checkbox" value="Northeastern"> Northeastern</label>
+            <label class="ms-option"><input type="checkbox" value="Quinnipiac"> Quinnipiac</label>
+            <label class="ms-option"><input type="checkbox" value="Roger Williams University"> Roger Williams University</label>
+            <label class="ms-option"><input type="checkbox" value="Smith"> Smith</label>
+            <label class="ms-option"><input type="checkbox" value="UConn"> UConn</label>
+            <label class="ms-option"><input type="checkbox" value="UMass Amherst"> UMass Amherst</label>
+            <label class="ms-option"><input type="checkbox" value="UMass Dartmouth"> UMass Dartmouth</label>
+            <label class="ms-option"><input type="checkbox" value="UVM"> UVM</label>
+            <label class="ms-option"><input type="checkbox" value="University of Maine"> University of Maine</label>
+            <label class="ms-option"><input type="checkbox" value="University of New England"> University of New England</label>
+            <label class="ms-option"><input type="checkbox" value="University of Rhode Island"> University of Rhode Island</label>
+            <label class="ms-option"><input type="checkbox" value="University of Southern Maine"> University of Southern Maine</label>
+            <label class="ms-option"><input type="checkbox" value="Vassar"> Vassar</label>
+          </div>
+        </div>
       </div>
       <div class="control-group">
-        <label for="catFilter">Category</label>
-        <select id="catFilter" multiple onchange="filterTable()">
-          <option value="Business & Management">Business & Management</option>
-          <option value="Communications & Media">Communications & Media</option>
-          <option value="Design & Architecture">Design & Architecture</option>
-          <option value="Education">Education</option>
-          <option value="Engineering & Technology">Engineering & Technology</option>
-          <option value="Fine Arts & Music">Fine Arts & Music</option>
-          <option value="Health Sciences">Health Sciences</option>
-          <option value="Humanities">Humanities</option>
-          <option value="Natural Sciences & Math">Natural Sciences & Math</option>
-          <option value="Social Sciences">Social Sciences</option>
-        </select>
-        <small class="hint">Ctrl/⌘+click for multiple</small>
+        <label>Category</label>
+        <div class="multiselect" id="catFilter">
+          <button class="ms-btn" id="catFilterBtn" onclick="toggleDropdown('catFilter', event)">All Categories</button>
+          <div class="ms-dropdown" id="catFilterDropdown">
+            <label class="ms-option"><input type="checkbox" value="Business &amp; Management"> Business &amp; Management</label>
+            <label class="ms-option"><input type="checkbox" value="Communications &amp; Media"> Communications &amp; Media</label>
+            <label class="ms-option"><input type="checkbox" value="Design &amp; Architecture"> Design &amp; Architecture</label>
+            <label class="ms-option"><input type="checkbox" value="Education"> Education</label>
+            <label class="ms-option"><input type="checkbox" value="Engineering &amp; Technology"> Engineering &amp; Technology</label>
+            <label class="ms-option"><input type="checkbox" value="Fine Arts &amp; Music"> Fine Arts &amp; Music</label>
+            <label class="ms-option"><input type="checkbox" value="Health Sciences"> Health Sciences</label>
+            <label class="ms-option"><input type="checkbox" value="Humanities"> Humanities</label>
+            <label class="ms-option"><input type="checkbox" value="Natural Sciences &amp; Math"> Natural Sciences &amp; Math</label>
+            <label class="ms-option"><input type="checkbox" value="Social Sciences"> Social Sciences</label>
+          </div>
+        </div>
       </div>
       <button class="btn-reset" onclick="resetFilters()">Reset</button>
     </div>
@@ -610,10 +673,56 @@
       updateCount();
     }
 
+    /* ── Custom multi-select helpers ── */
+    function getSelected(id) {
+      return Array.from(document.querySelectorAll('#' + id + 'Dropdown input:checked')).map(function(cb) { return cb.value; });
+    }
+
+    function updateBtnLabel(id, defaultText) {
+      var selected = getSelected(id);
+      var btn = document.getElementById(id + 'Btn');
+      if (selected.length === 0) {
+        btn.innerHTML = defaultText;
+      } else if (selected.length === 1) {
+        btn.innerHTML = selected[0] + ' <span class="ms-count">1</span>';
+      } else {
+        btn.innerHTML = defaultText + ' <span class="ms-count">' + selected.length + '</span>';
+      }
+      btn.classList.toggle('open', document.getElementById(id + 'Dropdown').classList.contains('open'));
+    }
+
+    function toggleDropdown(id, e) {
+      e.stopPropagation();
+      var dropdown = document.getElementById(id + 'Dropdown');
+      var btn = document.getElementById(id + 'Btn');
+      var isOpen = dropdown.classList.contains('open');
+      closeAllDropdowns();
+      if (!isOpen) {
+        dropdown.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    function closeAllDropdowns() {
+      document.querySelectorAll('.ms-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
+      document.querySelectorAll('.ms-btn.open').forEach(function(b) { b.classList.remove('open'); });
+    }
+
+    document.addEventListener('click', closeAllDropdowns);
+
+    document.querySelectorAll('.ms-dropdown input[type="checkbox"]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var id = this.closest('.multiselect').id;
+        var defaultText = id === 'schoolFilter' ? 'All Schools' : 'All Categories';
+        updateBtnLabel(id, defaultText);
+        filterTable();
+      });
+    });
+
     function filterTable() {
       const search = document.getElementById('searchInput').value.trim().toLowerCase();
-      const schoolVals = Array.from(document.getElementById('schoolFilter').selectedOptions).map(o => o.value);
-      const catVals    = Array.from(document.getElementById('catFilter').selectedOptions).map(o => o.value);
+      const schoolVals = getSelected('schoolFilter');
+      const catVals    = getSelected('catFilter');
       document.querySelectorAll('#tableBody tr').forEach(function(tr) {
         const matchSearch = !search ||
           tr.dataset.major.toLowerCase().includes(search) ||
@@ -628,8 +737,9 @@
 
     function resetFilters() {
       document.getElementById('searchInput').value = '';
-      document.getElementById('schoolFilter').selectedIndex = -1;
-      document.getElementById('catFilter').selectedIndex = -1;
+      document.querySelectorAll('.ms-dropdown input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+      updateBtnLabel('schoolFilter', 'All Schools');
+      updateBtnLabel('catFilter', 'All Categories');
       filterTable();
     }
 
