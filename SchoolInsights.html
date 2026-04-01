@@ -312,6 +312,41 @@
       flex-shrink: 0;
     }
 
+    .school-card-stats {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .stat-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.55rem 0.5rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray);
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 1px;
+    }
+
+
     .school-card-body {
       padding: 1.2rem 1.4rem 1rem;
     }
@@ -510,6 +545,11 @@
         <span class="meta-badge">Garden City, NY (main); Brooklyn, Hudson Valley, Suffolk County</span>
         <span class="meta-badge">Private university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1150</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.4</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">69%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Adelphi was founded in 1896 as Adelphi College in Brooklyn and moved to Garden City in 1929, with its original buildings designed by McKim, Mead and White. It is now a comprehensive university with seven schools including the Gordon F. Derner School of Psychology, which offers training from undergraduate to postdoctoral levels in psychoanalytic thought. The School of Social Work operates the Adelphi New York Statewide Breast Cancer Hotline, the second oldest breast cancer hotline in the United States. Adelphi has dual-degree pathways with Columbia University (3-2 engineering and environmental studies), NYU College of Dentistry, SUNY Optometry, and New York Medical College. The count of 6 reflects programs genuinely new to the spreadsheet; Adelphi offers 50+ undergraduate degrees, with most already catalogued from other institutions.</p>
         <div class="standout">
@@ -528,6 +568,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Amherst, MA</span>
         <span class="meta-badge">Private liberal arts college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1520</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.07</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">9%</span></div>
       </div>
       <div class="school-card-body">
         <p>Amherst offers 39 majors under a fully open curriculum — no distribution requirements beyond the major itself. The college was a national pioneer in several interdisciplinary fields: it founded one of the first undergraduate departments in American Studies, Law Jurisprudence &amp; Social Thought, and Neuroscience anywhere in the country. Theater &amp; Dance is a combined major, and the college has separate majors in Greek, Latin, Classical Civilization, and Classics under one classics umbrella.</p>
@@ -548,6 +593,11 @@
         <span class="meta-badge">Wellesley, MA</span>
         <span class="meta-badge">Private business college</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1460</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.03</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">17%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Babson awards a single undergraduate degree: a B.S. in Business Administration. Every student graduates with the same degree, customized through 24 concentrations (think: majors within a major). This is an intentional model, not a limitation — the school has been ranked #1 in the country for entrepreneurship education by U.S. News for multiple consecutive decades.</p>
         <div class="standout">
@@ -566,6 +616,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">New York, NY (Morningside Heights)</span>
         <span class="meta-badge">Private women's liberal arts college; affiliated with Columbia University; Seven Sisters</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1510</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">9%</span></div>
       </div>
       <div class="school-card-body">
         <p>Barnard was founded in 1889 when Columbia's trustees refused to admit women — named for Frederick A. P. Barnard, Columbia's president who had unsuccessfully advocated for coeducation. The college sits directly across Broadway from Columbia's main campus, with reciprocal cross-registration and shared sports teams. Barnard is the only women's college competing in NCAA Division I athletics and is the most selective women's college in the nation. The Milstein Center for Teaching and Learning features a Movement Lab, Design Center, and Media Center. A key structural fact: Barnard has its own urban studies and dance departments, while Columbia handles computer science for both campuses. The count of 8 reflects programs genuinely new to the spreadsheet; Barnard offers about 50 areas of study.</p>
@@ -586,6 +641,11 @@
         <span class="meta-badge">Lewiston, ME</span>
         <span class="meta-badge">Private liberal arts college (NESCAC)</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1440</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">12%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Bates offers 37 majors, all culminating in a required senior thesis or capstone seminar — one of the few colleges in the country where a thesis is mandatory across all majors, not just honors tracks. Notable programs include Dance, Rhetoric Film and Screen Studies, and a newly approved Digital and Computational Studies major (2025). Bates also offers an Engineering major as a dual-degree pathway with five partner universities including Dartmouth and Columbia.</p>
         <div class="standout">
@@ -604,6 +664,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Bennington, VT</span>
         <span class="meta-badge">Private liberal arts college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1340</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.53</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">45%</span></div>
       </div>
       <div class="school-card-body">
         <p>Bennington has no traditional majors. Students design their own "Plan" — an individualized course of study developed with a faculty committee. The 28 entries in the spreadsheet represent Bennington's official Areas of Study, which serve as building blocks rather than fixed programs. Every student also completes a seven-week off-campus Field Work Term each January. Bennington has deep roots in dance, writing, and the visual arts.</p>
@@ -624,6 +689,11 @@
         <span class="meta-badge">Waltham, MA</span>
         <span class="meta-badge">Private business university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1345</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.8</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">45%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Bentley offers 18 business majors and 14 arts and sciences majors, with all students earning either a B.S. or B.A. — not a generic "business" degree. The school sits just outside Boston and is ranked #1 among regional universities in the Northeast by U.S. News. Bentley has been unusually forward-looking in creating new programs.</p>
         <div class="standout">
@@ -642,6 +712,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Chestnut Hill, MA</span>
         <span class="meta-badge">Private Jesuit research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1490</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.0</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">16%</span></div>
       </div>
       <div class="school-card-body">
         <p>BC's Morrissey College of Arts and Sciences offers 39 majors alongside the Carroll School of Management (business), Lynch School of Education, and Connell School of Nursing. The Jesuit core curriculum is required of all students, meaning every BC undergraduate takes courses in theology, philosophy, history, literature, and natural sciences regardless of major. Islamic Civilization and Societies is one of the more distinctive liberal arts programs.</p>
@@ -662,6 +737,11 @@
         <span class="meta-badge">Boston, MA</span>
         <span class="meta-badge">Private research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1430</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">14%</span></div>
+      </div>
       <div class="school-card-body">
         <p>BU has 10 undergraduate schools and colleges, so its 44 majors span a wide range of professional and liberal arts programs. The College of Fine Arts has three divisions (Music, Theatre, Visual Arts). COM (School of Communication) is nationally recognized for journalism, PR, film/TV, and media science. BU also has an unusually strong health sciences track through Sargent College.</p>
         <div class="standout">
@@ -680,6 +760,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Brunswick, ME</span>
         <span class="meta-badge">Private liberal arts college (NESCAC)</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1510</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.0</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">9%</span></div>
       </div>
       <div class="school-card-body">
         <p>Bowdoin is consistently ranked among the top 5 liberal arts colleges nationally. It has no core curriculum requirements — students are free to design their own path within their major. The college has a strong tradition in environmental science given its coastal Maine location, and several interdisciplinary programs (Africana Studies, Gender and Women's Studies, Neuroscience) that are long-established.</p>
@@ -700,6 +785,11 @@
         <span class="meta-badge">Waltham, MA</span>
         <span class="meta-badge">Private research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1460</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">40%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Brandeis is a research university with the feel of a liberal arts college. It has 44 majors and a strong tradition in social justice, Jewish studies, and international affairs. The Heller School for Social Policy has shaped many of Brandeis's social science offerings. Several interdisciplinary programs reflect the university's founding mission.</p>
         <div class="standout">
@@ -718,6 +808,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Providence, RI</span>
         <span class="meta-badge">Private Ivy League research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1555</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.1</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">5%</span></div>
       </div>
       <div class="school-card-body">
         <p>Brown's Open Curriculum means there are no required courses outside of the concentration (major). With 68 concentrations in the file, Brown has the largest major count of any school we've catalogued. Many are highly specialized: Egyptology and Assyriology, Contemplative Studies, Medieval Cultures, and Judaic Studies alongside the standard disciplines. Brown also has a joint program with RISD.</p>
@@ -738,6 +833,11 @@
         <span class="meta-badge">Smithfield, RI</span>
         <span class="meta-badge">Private business university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1262</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.53</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">66%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Bryant's model requires students to complete both a major and a minor, with one from the College of Business and one from the College of Arts and Sciences (or vice versa). This interdisciplinary requirement is built into every degree. Sports Industries, Media and Promotion is a standout professional program reflecting Bryant's proximity to the New England sports market.</p>
         <div class="standout">
@@ -756,6 +856,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Worcester, MA</span>
         <span class="meta-badge">Private research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1375</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.76</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">40%</span></div>
       </div>
       <div class="school-card-body">
         <p>Clark is a small research university with unusually strong programs in geography (a field that has largely disappeared from many colleges), environmental science, and psychology. The university has a distinct focus on "challenge convention, change our world" as a guiding philosophy and is known for its LEEP (Liberal Education and Effective Practice) curriculum that integrates real-world experience.</p>
@@ -776,6 +881,11 @@
         <span class="meta-badge">Potsdam, NY; Capital Region satellite programs</span>
         <span class="meta-badge">Private research university (R2); founded 1896</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1300</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.6</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">77%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Clarkson sits on 640 wooded and waterfront acres in Potsdam, in the Adirondack foothills near the Canadian border — Montreal and Ottawa are about 90 minutes north. It has five schools: Engineering and Applied Sciences; Business; Health and Life Sciences; Institute for a Sustainable Environment; and Institute for STEM Education. In 2023 the university reorganized, phasing out humanities and social sciences majors to focus tightly on engineering, business, science, and health. All undergraduates complete the Clarkson Common Experience and are encouraged to gain professional experience through internships, co-ops, or research. Alumni earn salaries in the top 2% nationally; one in five already leads at the C-suite level.</p>
         <div class="standout">
@@ -794,6 +904,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Waterville, ME</span>
         <span class="meta-badge">Private liberal arts college (NESCAC)</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1450</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.92</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">11%</span></div>
       </div>
       <div class="school-card-body">
         <p>Colby offers 43 majors, unusually large for a NESCAC school, and has invested heavily in new interdisciplinary programs in recent years. The college is known for a strong January term (Jan Plan), a month of intensive independent or course-based study. Colby opened a new arts and museum complex, Colby College Museum of Art, that influences some of its visual arts and art history offerings.</p>
@@ -815,6 +930,11 @@
         <span class="meta-badge">Hamilton, NY</span>
         <span class="meta-badge">Private liberal arts university; Hidden Ivy</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1435</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">17%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Colgate was founded in 1819 — celebrated for being founded by 13 men with 13 dollars, 13 prayers, and 13 articles, a legend the campus honors every Friday the 13th. The 575-acre campus is built almost entirely in stone. Colgate offers 56 undergraduate majors all leading to a BA, with a 9:1 student-faculty ratio and 71% of classes under 20 students. It operates 22 off-campus study groups each year. Beginning with the class of 2022, Colgate became fully tuition-free for families earning under $80,000 and meets 100% of demonstrated need for all admitted students. Its acceptance rate of around 17% reflects the selectivity of a Hidden Ivy. The count of 6 reflects programs genuinely new to the spreadsheet.</p>
         <div class="standout">
@@ -834,6 +954,11 @@
         <span class="meta-badge">New York, NY (Morningside Heights)</span>
         <span class="meta-badge">Private Ivy League research university; chartered 1754</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1560</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.1</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">4%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Columbia is one of the oldest universities in the United States, chartered in 1754 as King's College. All Columbia College students complete the Core Curriculum — one of the oldest general education programs in the country, centered on Literature Humanities, Contemporary Civilization, Art Humanities, and Music Humanities. Columbia's New York location is built into the curriculum: the journalism school is a working newsroom; the law school sits blocks from federal courts; and the business school recruits from Wall Street firms who regard Columbia graduates as effectively local. The university is affiliated with Barnard College across Broadway, with cross-registration and shared facilities. The count of 8 reflects programs genuinely new to the spreadsheet; Columbia has 80+ majors.</p>
         <div class="standout">
@@ -851,6 +976,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">New London, CT</span>
         <span class="meta-badge">Private liberal arts college (NESCAC)</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1380</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.8</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">37%</span></div>
       </div>
       <div class="school-card-body">
         <p>Connecticut College (Conn) uses a "Connections" curriculum that integrates coursework, internships, study abroad, and community partnerships. The college has 37 majors and allows students to design their own. Botany and Zoology are offered as distinct majors — unusual at liberal arts colleges where these typically fold into a single Biology department.</p>
@@ -871,6 +1001,11 @@
         <span class="meta-badge">Ithaca, NY (main); New York City (Weill Cornell); Doha, Qatar</span>
         <span class="meta-badge">Private Ivy League research university and New York State land-grant institution; founded 1865</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1510</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.05</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">8%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Cornell was founded in 1865 with the explicit mission of being "an institution where any person can find instruction in any study." It is the only Ivy League school that is also a land-grant institution — four of its colleges (Agriculture and Life Sciences, Human Ecology, ILR, and Veterinary Medicine) operate as contract colleges with New York State, meaning tuition is lower for in-state students and the programs carry a public service mission. Cornell was the first U.S. university to offer a major in American Studies and the first in the world to award a journalism degree. Students apply to a specific college within Cornell, not to the university as a whole — the major decision happens before admission, not during sophomore year.</p>
         <div class="standout">
@@ -889,6 +1024,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Franklin, MA</span>
         <span class="meta-badge">Private college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1010</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">2.88</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">74%</span></div>
       </div>
       <div class="school-card-body">
         <p>Dean is a small college historically known for its two-year associate programs, though it now grants bachelor's degrees in a focused set of areas. The college has particular strengths in the performing arts and business, with a tight-knit campus community.</p>
@@ -909,6 +1049,11 @@
         <span class="meta-badge">Elmira, NY (Southern Finger Lakes)</span>
         <span class="meta-badge">Private liberal arts college; founded 1855</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1090</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.3</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">77%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Elmira was founded in 1855 as one of the first colleges for women with a course of study equal in rigor to the best men's colleges of the era. The campus is home to the Center for Mark Twain Studies and the octagonal study where Twain actually wrote — including portions of Adventures of Huckleberry Finn — during his summer stays in Elmira. The college operates on an unusual academic calendar: two 12-week terms followed by a four-week Term III each spring dedicated to immersive off-campus learning. Every student must also complete 60 hours of community service. 97% of students complete at least one internship before graduation. Elmira was ranked #6 in Best Regional Colleges North and #3 in Best Value Colleges North by U.S. News in 2025.</p>
         <div class="standout">
@@ -927,6 +1072,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Boston, MA</span>
         <span class="meta-badge">Private communications and arts college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1360</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.73</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">47%</span></div>
       </div>
       <div class="school-card-body">
         <p>Emerson is one of the few colleges in the country devoted entirely to communication, the arts, and liberal arts. Every major connects to those three areas. The college has a Los Angeles campus, a castle in the Netherlands, and a Global BFA in Film Art based in Paris. Sports Communication and Comedic Arts are among the most unusual programs at any school in this list.</p>
@@ -947,6 +1097,11 @@
         <span class="meta-badge">Beverly, MA</span>
         <span class="meta-badge">Private college</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1250</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.55</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">72%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Endicott requires all students to complete at least one semester-long internship as a graduation requirement — a distinctive academic model. The college has strong programs in hospitality, nursing, education, and the visual arts, with a scenic campus on the Beverly shore.</p>
         <div class="standout">
@@ -965,6 +1120,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Fairfield, CT</span>
         <span class="meta-badge">Private Jesuit university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1365</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">25%</span></div>
       </div>
       <div class="school-card-body">
         <p>Fairfield is a Jesuit university with 53 undergraduate majors across five schools including a full engineering school (Biomedical Engineering, Software Engineering, and Electrical Engineering), Dolan School of Business (AACSB accredited), and Egan School of Nursing. The university is situated an hour from New York City, which strongly shapes its career programming.</p>
@@ -985,6 +1145,11 @@
         <span class="meta-badge">New York, NY (with Bronx campus)</span>
         <span class="meta-badge">Private Jesuit research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1415</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.61</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">58%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Fordham has two undergraduate campuses — Rose Hill in the Bronx and Lincoln Center in Manhattan — and programs are shaped by proximity to New York City. The Gabelli School of Business and Fordham College offer strong interdisciplinary programs. International Political Economy is a distinctive offering that reflects Fordham's urban and global orientation.</p>
         <div class="standout">
@@ -1003,6 +1168,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Framingham, MA</span>
         <span class="meta-badge">Public state university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1105</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.08</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">85%</span></div>
       </div>
       <div class="school-card-body">
         <p>Framingham State is a mid-sized public university in the Massachusetts state system with historic strength in food and nutrition, teacher preparation, and liberal arts. The Food and Nutrition program is one of the strongest at any public institution in the state and has a long tradition going back to the school's home economics roots.</p>
@@ -1023,6 +1193,11 @@
         <span class="meta-badge">Clinton, NY</span>
         <span class="meta-badge">Private liberal arts college; founded 1812; one of the Little Ivies</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1450</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.92</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">14%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Hamilton was chartered in 1812 and named for Alexander Hamilton, who was an inaugural trustee. It is one of only a handful of U.S. colleges with a fully open curriculum — no required courses beyond a writing requirement and a quantitative reasoning requirement. Hamilton calls its majors "concentrations" and students choose from 44, declaring by the end of sophomore year. The college is known for one of the most rigorous writing programs at any liberal arts college, nationally recognized for decades. The 1,300-acre campus includes the oldest indoor collegiate hockey rink in the United States, built in 1921. The acceptance rate of about 14% places Hamilton among the most selective liberal arts colleges in the country. Dual-degree engineering programs are available with Columbia's SEAS and Dartmouth's Thayer School.</p>
         <div class="standout">
@@ -1041,6 +1216,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Cambridge, MA</span>
         <span class="meta-badge">Private Ivy League research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1570</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.18</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">3%</span></div>
       </div>
       <div class="school-card-body">
         <p>Harvard calls its majors "concentrations" and offers 50 across all fields. There is no business, accounting, hospitality, or heavily pre-professional major — all undergraduate study is liberal arts and sciences. Three concentrations require an application from within Harvard to enter: Comparative Literature, Environmental Science and Public Policy, and History and Literature. The Open Curriculum requires only that students complete a concentration, a language, writing, and general education courses.</p>
@@ -1061,6 +1241,11 @@
         <span class="meta-badge">Hempstead, NY (Long Island); Manhattan center</span>
         <span class="meta-badge">Private research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1310</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.8</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">68%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Hofstra began in 1935 as Nassau College, an extension of NYU, on the estate of lumber entrepreneur William Hofstra and his wife Kate Mason. It is the only institution ever selected to host U.S. presidential debates in three consecutive election cycles: 2008, 2012, and 2016. The 244-acre campus contains approximately 117 buildings and holds what is considered the most accurate Globe Theatre replica in the United States, built in 1950 on a five-sixths scale and used for an annual Shakespeare Festival that has run since then. Hofstra competes in NCAA Division I across 21 intercollegiate programs. The Lawrence Herbert School of Communication is one of the most prominent communication programs in the New York metro area, ACEJMC accredited, and is home to WRHU Radio — one of the strongest college stations in the country. The Zucker School of Medicine at Hofstra/Northwell and the Northwell Health connection give health professions students access to one of the largest healthcare systems in the country. Hofstra offers 185 undergraduate program options across ten schools and colleges.</p>
         <div class="standout">
@@ -1079,6 +1264,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Worcester, MA</span>
         <span class="meta-badge">Private Jesuit liberal arts college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1330</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.7</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">18%</span></div>
       </div>
       <div class="school-card-body">
         <p>Holy Cross is a highly selective Jesuit liberal arts college that grants only the B.A. degree — there are no professional schools or business programs. The curriculum is anchored in the Jesuit tradition of educating the whole person. The college recently added new interdisciplinary programs including Data Science.</p>
@@ -1099,6 +1289,11 @@
         <span class="meta-badge">Bangor, ME</span>
         <span class="meta-badge">Private university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1060</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.1</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">80%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Husson is a small private university in Bangor with a focus on professional programs including nursing, pharmacy, physical therapy, criminal justice, and business. The university has a practical, career-oriented model and is the only independent university in Maine with a pharmacy school.</p>
         <div class="standout">
@@ -1117,6 +1312,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Ithaca, NY</span>
         <span class="meta-badge">Private comprehensive university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1310</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.5</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">69%</span></div>
       </div>
       <div class="school-card-body">
         <p>Ithaca College sits on South Hill above Cayuga Lake, about a mile from Cornell's campus on East Hill. The two schools coexist but are entirely separate institutions — IC is smaller, more teaching-focused, and built around professional programs in communications, music, and health sciences rather than research. The Roy H. Park School of Communications is the flagship — named after the media executive and Ithaca alumnus who donated $15 million in 1994. It is consistently ranked among the top undergraduate communications programs in the country, with professional-grade studios, production facilities, and strong alumni networks at major broadcast outlets. The School of Music is nationally ranked and offers a wide range of performance and education programs. IC is one of the few schools with a direct-entry Doctor of Physical Therapy program, meaning students enter as undergraduates and complete the DPT without a separate application to graduate school. Documentary Studies and Production is a standalone major that is genuinely rare at the undergraduate level — most schools treat documentary as a concentration within film. The college has about 5,400 undergraduates across five schools: Business, Communications, Health Sciences and Human Performance, Humanities and Sciences, and Music.</p>
@@ -1137,6 +1337,11 @@
         <span class="meta-badge">Providence, RI</span>
         <span class="meta-badge">Private university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1025</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.0</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">88%</span></div>
+      </div>
       <div class="school-card-body">
         <p>JWU is primarily known for its hospitality and culinary programs, which are nationally ranked. The university structures all programs around an experiential, career-first model. Culinary Arts and Baking &amp; Pastry Arts are major programs here that don't exist as undergraduate majors at most institutions.</p>
         <div class="standout">
@@ -1155,6 +1360,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Keene, NH</span>
         <span class="meta-badge">Public liberal arts college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1065</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.17</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">90%</span></div>
       </div>
       <div class="school-card-body">
         <p>Keene State is New Hampshire's public liberal arts college. With 37 majors, it offers a broad range of programs. The Safety &amp; Occupational Health Applied Sciences program is the second-largest major on campus. Precision Optics is unique in the region. And Holocaust &amp; Genocide Studies holds a historic distinction.</p>
@@ -1175,6 +1385,11 @@
         <span class="meta-badge">Newton, MA</span>
         <span class="meta-badge">Private university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1130</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.12</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">73%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Lasell requires every undergraduate student to complete at least one internship — it's built into the academic model ("Connected Learning"). The university has particular strength in fashion, communication, sport management, and health fields, with programs tailored for professional entry. Lasell sits near Harvard Square in Newton with a shuttle to the Green Line.</p>
         <div class="standout">
@@ -1193,6 +1408,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Cambridge, MA</span>
         <span class="meta-badge">Private university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1105</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.2</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">97%</span></div>
       </div>
       <div class="school-card-body">
         <p>Lesley has two undergraduate colleges: the College of Art and Design (formerly the Art Institute of Boston) and the College of Liberal Arts and Sciences. The art and design programs are BFAs — professionally oriented studio degrees. All students participate in the Scholar Partner Program, which guarantees internships. Lesley also has graduate programs in expressive arts therapies, counseling, and education.</p>
@@ -1213,6 +1433,11 @@
         <span class="meta-badge">Castine, ME</span>
         <span class="meta-badge">Public maritime college</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1170</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.46</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">61%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Maine Maritime is a small public academy with approximately 950 undergraduate students. Programs are almost entirely maritime, engineering, and logistics-focused. Many students join the Regiment of Midshipmen and complete sea terms aboard the Training Ship State of Maine or the historic Schooner Bowdoin. The school has a 90% job placement rate within 90 days of graduation. Starting salaries range from $60,000 to $120,000 depending on program.</p>
         <div class="standout">
@@ -1231,6 +1456,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Boston, MA</span>
         <span class="meta-badge">Public art college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1065</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.4</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">77%</span></div>
       </div>
       <div class="school-card-body">
         <p>MassArt is the only publicly funded independent art school in the United States, founded in 1873. All 18 undergraduate programs lead to a BFA, with a shared Foundation Year before students select a major. The breadth of studio disciplines is remarkable for a single-institution art school.</p>
@@ -1251,6 +1481,11 @@
         <span class="meta-badge">Montreal, Quebec, Canada</span>
         <span class="meta-badge">Public research university; founded 1821</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1375</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.85</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">48%</span></div>
+      </div>
       <div class="school-card-body">
         <p>McGill was founded in 1821 and is Canada's most internationally recognized university, ranked #62 globally by U.S. News. It is one of only two members of the Association of American Universities (AAU) located outside the United States — the other is the University of Toronto. Alumni and faculty include 15 Nobel laureates, 149 Rhodes Scholars, 1 Turing Award winner (Yoshua Bengio, a pioneer of deep learning who earned his PhD here), 3 former Canadian prime ministers, and 14 justices of the Supreme Court of Canada. The medical school is the oldest in Canada and is affiliated with the Montreal General Hospital, Montreal Children's Hospital, Montreal Neurological Institute, and other major teaching hospitals. McGill's Faculty of Arts is its largest academic unit, with 22% of all students — reflecting a genuinely research-grade liberal arts tradition alongside the professional and science programs. About 25% of students are international, representing more than 150 countries. Primary instruction is in English, though the university operates in a predominantly French-speaking city — giving students a genuinely bilingual urban environment. Tuition for international students (including Americans) is significantly higher than domestic Canadian rates but typically lower than comparable private U.S. research universities. The main campus is on the slope of Mount Royal in downtown Montreal, steps from the city's museum district, restaurant scene, and cultural institutions.</p>
         <div class="standout">
@@ -1269,6 +1504,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">North Adams, MA</span>
         <span class="meta-badge">Public liberal arts college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1070</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.2</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">90%</span></div>
       </div>
       <div class="school-card-body">
         <p>MCLA is ranked #6 nationally among public liberal arts colleges by U.S. News and offers the lowest tuition of any four-year public college in Massachusetts. The Berkshire location means students have access to Mass MoCA and other Berkshire arts institutions. Graduates carry the lowest debt levels of any Massachusetts college. MCLA has 22 majors with multiple concentrations within each.</p>
@@ -1289,6 +1529,11 @@
         <span class="meta-badge">Cambridge, MA</span>
         <span class="meta-badge">Private research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1570</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.17</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">4%</span></div>
+      </div>
       <div class="school-card-body">
         <p>MIT calls its majors "Courses" (Course 6 = EECS, Course 8 = Physics, etc.) and all lead to a B.S. degree. With 58 official courses of study, we captured 26 that are most distinct. The university has no business school at the undergraduate level, no pre-professional accounting or nursing, and no pre-law track. Every program is oriented around science, engineering, architecture, management, or the humanities/arts/social sciences.</p>
         <div class="standout">
@@ -1307,6 +1552,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Buzzards Bay, MA</span>
         <span class="meta-badge">Public maritime academy</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1100</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.1</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">91%</span></div>
       </div>
       <div class="school-card-body">
         <p>MMA offers exactly seven undergraduate majors — all maritime or engineering-focused. All students are members of the Regiment of Cadets, living under a structured, regimental daily schedule. Annual sea terms are part of several degree programs. The academy is situated at the edge of the Cape Cod Canal.</p>
@@ -1327,6 +1577,11 @@
         <span class="meta-badge">Middlebury, VT</span>
         <span class="meta-badge">Private liberal arts college (NESCAC)</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1475</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.95</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">14%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Middlebury offers 45 majors and is one of the most respected liberal arts colleges in the country, particularly renowned for language education. The 4-1-4 calendar (fall semester, January term, spring semester) gives students a month each year for independent research, intensive study, or internships. The Language Schools on campus attract students from around the world each summer for immersive instruction in more than a dozen languages. Middlebury's count in this file is 21 because many standard liberal arts majors were already in the spreadsheet from other schools and simply added Middlebury as an additional school.</p>
         <div class="standout">
@@ -1345,6 +1600,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">New London, CT</span>
         <span class="meta-badge">Private college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">815</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.15</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">73%</span></div>
       </div>
       <div class="school-card-body">
         <p>Mitchell is a small private college with an unusually strong commitment to supporting neurodiverse learners. The Thames Academy Learning Center provides extensive support services. Program offerings are focused and career-oriented.</p>
@@ -1365,6 +1625,11 @@
         <span class="meta-badge">South Hadley, MA</span>
         <span class="meta-badge">Private women's college (gender diverse)</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1460</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.89</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">36%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Mount Holyoke is the oldest of the Seven Sisters (founded 1837) and describes itself as a women's college that is gender diverse, meaning transgender and nonbinary students are explicitly welcome. With 48 majors, it has one of the broadest catalogs among the Seven Sisters. Students have access to over 6,000 courses through the Five College Consortium with Amherst, Smith, Hampshire, and UMass Amherst. The college has a particular strength in the sciences — it has long graduated more women who go on to earn science PhDs than most institutions.</p>
         <div class="standout">
@@ -1383,6 +1648,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Dudley, MA</span>
         <span class="meta-badge">Private business college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1100</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">2.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">81%</span></div>
       </div>
       <div class="school-card-body">
         <p>Nichols is an AACSB-accredited business college offering the BSBA (with 17 concentrations) and the BA (with 5 liberal arts majors). The school ranks 9th nationally among undergraduate business schools for salary potential (Payscale) and claims that 4 in 10 graduates become a president, CEO, or business owner. Every student has access to Bloomberg Terminals and the college's Center for Intelligent Processing Automation.</p>
@@ -1403,6 +1673,11 @@
         <span class="meta-badge">Boston, MA</span>
         <span class="meta-badge">Private research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1540</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.04</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">7%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Northeastern is defined by its co-op model: most undergraduates complete one to three six-month paid work experiences embedded in the degree program. This produces graduates with significant real-world experience before they finish their bachelor's degree. With 56 majors in the file, Northeastern's breadth spans business, engineering, health sciences, social sciences, and the arts.</p>
         <div class="standout">
@@ -1421,6 +1696,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Providence, RI</span>
         <span class="meta-badge">Private Dominican Catholic university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1308</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.54</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">51%</span></div>
       </div>
       <div class="school-card-body">
         <p>Providence College is the only college or university in North America administered by the Dominican Order of Friars. With 39 majors across four schools (Arts &amp; Sciences, Business, Education and Social Work, and Nursing and Health Sciences), PC combines a strong liberal arts core with professional programs. All undergraduates are required to complete the Development of Western Civilization program — a two-year, team-taught sequence covering philosophy, theology, literature, and history from ancient to modern times. PC is ranked #1 in U.S. News's Regional Universities North category.</p>
@@ -1441,6 +1721,11 @@
         <span class="meta-badge">Hamden, CT</span>
         <span class="meta-badge">Private university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1230</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.5</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">72%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Quinnipiac has grown rapidly and now offers 50 majors across colleges of arts and sciences, business, education, health sciences, and communications. The School of Communications has strong journalism, public relations, and media production programs. The health sciences programs are extensive.</p>
         <div class="standout">
@@ -1459,6 +1744,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Weston, MA</span>
         <span class="meta-badge">Private Catholic university (Sisters of St. Joseph)</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1050</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.4</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">90%</span></div>
       </div>
       <div class="school-card-body">
         <p>Regis was founded in 1927 by the Sisters of St. Joseph of Boston and sits on a 131-acre campus 12 miles west of Boston. The school has four undergraduate schools: Arts and Sciences, Business and Communication, Nursing, and Health Sciences. Nursing is by far the largest program and is designated a Center of Excellence by the National League of Nursing. The count of 7 majors here reflects programs that were genuinely new to the spreadsheet — the school offers 27 undergraduate programs total, with heavy overlap against programs already catalogued from other schools. Regis operates its own clinical dental center in Waltham and has cross-registration privileges with Babson, Bentley, Brandeis, and Boston College.</p>
@@ -1479,6 +1769,11 @@
         <span class="meta-badge">Troy, NY</span>
         <span class="meta-badge">Private research university (R1); founded 1824; first technological university in the English-speaking world</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1450</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.8</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">63%</span></div>
+      </div>
       <div class="school-card-body">
         <p>RPI was founded in 1824 as the first institution in the English-speaking world dedicated to applying science and technology to practical problems — predating MIT by 37 years. It sits on a hill above Troy, a small city on the Hudson River about 10 miles north of Albany. The university has five schools: Architecture, Engineering, Humanities, Arts, and Social Sciences (HASS), the Lally School of Management and Technology, and Science. Median salary six years after graduation is $83,054 — one of the highest among private research universities of its size. RPI has a working nuclear reactor on campus, the Walthousen Reactor Critical Facility, used for research and teaching — one of very few undergraduate programs in the country with this resource. The Games and Simulation Arts and Sciences program is one of the oldest game design undergraduate programs in the country, launched well before most peer institutions built their game programs. The Electronic Arts major is unusual for a STEM-focused university — treating digital art and creative technology as a serious academic discipline alongside engineering. The acceptance rate is around 53% with a strong yield, suggesting students who are admitted tend to enroll.</p>
         <div class="standout">
@@ -1497,6 +1792,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Providence, RI</span>
         <span class="meta-badge">Private art and design college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1455</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.6</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">14%</span></div>
       </div>
       <div class="school-card-body">
         <p>RISD was founded in 1877 and consistently ranks among the top art and design schools in the world. All 18+ undergraduate BFA programs share a required Foundation Year before students declare a major sophomore year. RISD's campus sits immediately adjacent to Brown University's on College Hill in Providence, and the two schools have cross-registered since 1900 and offer a dual-degree program. RISD alumni include Talking Heads founders David Byrne, Tina Weymouth, and Chris Frantz; Airbnb co-founders Brian Chesky and Joe Gebbia; Seth MacFarlane; and Shepard Fairey. The RISD Museum is one of the largest college art museums in the U.S. The count of 9 reflects new entries not already in the file from MassArt; the full BFA list is 18+ programs.</p>
@@ -1517,6 +1817,11 @@
         <span class="meta-badge">Rochester, NY</span>
         <span class="meta-badge">Private research university; approximately 19,000 students; nine colleges</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1370</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.7</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">67%</span></div>
+      </div>
       <div class="school-card-body">
         <p>RIT was founded in 1829 and sits on a 1,300-acre suburban campus on the western edge of Rochester. Its nine colleges include the National Technical Institute for the Deaf (NTID) — the world's first and largest technological college for deaf and hard-of-hearing students, federally funded and operating since 1968. NTID's presence shapes the entire campus culture: all students develop awareness of and in many cases proficiency with deaf communication, and the campus is one of the most intentionally accessible in the country. Rochester's history as the home of Kodak, Xerox, and the optical and imaging industries directly shaped RIT's curriculum — Imaging Science is offered nowhere else as a standalone undergraduate major, and Motion Picture Science reflects the city's photographic heritage. The university has a strong cooperative education program, with most students completing at least one co-op before graduation. Packaging Science is one of the only programs of its kind in the country, producing graduates who are in high demand in product development and supply chain roles. Medical Illustration combines biological science with visual communication in a program that feeds one of the most specialized professional niches in healthcare.</p>
         <div class="standout">
@@ -1535,6 +1840,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Bristol, RI</span>
         <span class="meta-badge">Private university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1220</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.43</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">88%</span></div>
       </div>
       <div class="school-card-body">
         <p>Roger Williams has a strong architecture school, a law school, and professional programs oriented around careers in building, justice, and business. The campus overlooks Mount Hope Bay in Bristol.</p>
@@ -1555,6 +1865,11 @@
         <span class="meta-badge">Standish, ME</span>
         <span class="meta-badge">Private Catholic college (Sisters of Mercy), Maine's only Catholic college</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1025</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.1</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">82%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Saint Joseph's sits on a 474-acre campus on the shores of Sebago Lake, 15 miles from Portland and 2 hours from Boston. Founded in 1912 by the Sisters of Mercy, it is Maine's only Catholic college. The campus hosts the first Certified Bee-Friendly Campus in Maine. The count of 6 reflects new programs added to the spreadsheet; the school offers 40+ majors overall, with considerable overlap against programs already catalogued. Enrollment was severely disrupted when the college briefly suspended operations in 2018–2019 due to financial difficulties but reopened under new ownership. The nursing and health sciences programs are among its strongest and most accredited.</p>
         <div class="standout">
@@ -1573,6 +1888,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Salem, MA</span>
         <span class="meta-badge">Public state university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1080</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.25</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">96%</span></div>
       </div>
       <div class="school-card-body">
         <p>Salem State is the oldest and largest institution of higher education on Massachusetts's North Shore, founded in 1854 as the Salem Normal School under Horace Mann. It is the only member of the Massachusetts public higher education system with a graduate program in social work. The university sits in Salem itself, with several campuses spread across the city including a facility adjacent to Salem Harbor. With 57 undergraduate majors across 20 broad fields, it is a comprehensive regional institution serving the North Shore community.</p>
@@ -1593,6 +1913,11 @@
         <span class="meta-badge">Newport, RI</span>
         <span class="meta-badge">Private Catholic university (Sisters of Mercy)</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1230</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.53</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">68%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Salve Regina's 80-acre campus borders the Newport Cliff Walk and consists of seven contiguous Gilded Age estates with 21 structures of historic significance. Architectural Digest and Condé Nast Traveler have both ranked it among the most beautiful college campuses in America. The university was founded in 1934 by the Sisters of Mercy and became coeducational in 1973. It offers 48 undergraduate majors and is home to the Pell Center for International Relations and Public Policy. The count of 5 reflects new programs added to the spreadsheet; most Salve majors were already catalogued from other institutions.</p>
         <div class="standout">
@@ -1611,6 +1936,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Bronxville, NY (Westchester County); 40 minutes from Midtown Manhattan</span>
         <span class="meta-badge">Private liberal arts college; founded 1926; coeducational since 1968</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1360</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.75</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">62%</span></div>
       </div>
       <div class="school-card-body">
         <p>Sarah Lawrence has no traditional majors and no required courses beyond a distribution requirement across four areas of study: Humanities, History and the Social Sciences, Natural Sciences and Mathematics, and Creative and Performing Arts. Every student works with a faculty advisor called a "don" who serves as both course teacher and personal academic mentor throughout all four years. Every class at Sarah Lawrence has a companion component called "conference work" — biweekly one-on-one meetings between the student and professor, functioning like a private tutorial. The college consistently ranks among the top 50 nationally for undergraduate teaching quality, with a 10:1 student-faculty ratio. The 5 programs in the spreadsheet reflect the disciplines students most commonly focus their individualized programs around — they are not declared majors in the traditional sense. Notable alumni include J.J. Abrams, Barbara Walters (the student center is named for her), Rahm Emanuel, Julianna Margulies, and Carly Simon. Yoko Ono attended but did not graduate. The campus sits on 44 acres in Bronxville, a quiet affluent suburb, with a train station nearby that puts students in Grand Central Terminal in about 35 minutes.</p>
@@ -1631,6 +1961,11 @@
         <span class="meta-badge">Boston, MA (Fenway neighborhood)</span>
         <span class="meta-badge">Private women's university (undergraduate), co-ed graduate</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1279</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.84</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">66%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Simmons is the only women's undergraduate program in Boston and was founded in 1899 as the first college in the U.S. to offer women a liberal arts education integrated with career preparation. All undergraduate students complete at least one internship, clinical, fieldwork, or research project. Simmons was one of the first colleges to explicitly accept transgender women undergraduates (2015). The School of Business was the first in the world to receive gender equity certification. The campus sits in the Fenway neighborhood adjacent to the Museum of Fine Arts, Fenway Park, and the Longwood Medical Area, giving health science students exceptional clinical placement access.</p>
         <div class="standout">
@@ -1649,6 +1984,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Saratoga Springs, NY</span>
         <span class="meta-badge">Private liberal arts college; founded 1903; Hidden Ivy</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1380</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.75</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">23%</span></div>
       </div>
       <div class="school-card-body">
         <p>Skidmore was founded in 1903 by Lucy Skidmore Scribner as a women's industrial club and became coeducational in 1971. Its motto, Creative Thought Matters, is not just a tagline — it shapes the major offerings and the culture of interdisciplinary study. The 890-acre campus in Saratoga Springs is one of the more distinctive settings of any liberal arts college in the Northeast: the city is known for horse racing, the Saratoga Performing Arts Center, and a lively downtown, making it one of the best college towns in the region. Saratoga Springs is about 35 miles north of Albany, 3 hours from Boston, 4 hours from New York. The Frances Young Tang Teaching Museum and Art Gallery, designed by architect Antoine Predock and opened in 2000, is nationally recognized. Skidmore ranked #37 nationally among liberal arts colleges in 2026 and is considered a Hidden Ivy. 85% of students complete at least one internship before graduation. The Arthur Zankel Music Center opened in 2010 and provides professional-quality concert and rehearsal facilities. Skidmore hosts the National College Comedy Festival annually, drawing improv groups from across the country.</p>
@@ -1669,6 +2009,11 @@
         <span class="meta-badge">Northampton, MA</span>
         <span class="meta-badge">Private women's liberal arts college</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1490</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.0</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">21%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Smith is one of the Seven Sisters and the largest women's liberal arts college in the country. It has 48 majors and one of the most expansive engineering programs (Picker Engineering Program) at any women's college. Smith students can cross-register with Amherst, Hampshire, Mount Holyoke, and UMass Amherst through the Five College Consortium.</p>
         <div class="standout">
@@ -1687,6 +2032,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Easton, MA</span>
         <span class="meta-badge">Private Catholic liberal arts college (Holy Cross)</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1205</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.32</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">73%</span></div>
       </div>
       <div class="school-card-body">
         <p>Stonehill was founded in 1948 by the Congregation of Holy Cross on a 387-acre estate in Easton, 22 miles south of Boston. It offers 52 majors and 55 minors. The school has a 75% four-year graduation rate, among the best in the country for a college of its size. Stonehill's Meehan School of Business is AACSB accredited, and the college has produced a strong record of sending graduates into major accounting firms. More than 80% of students complete at least one internship before graduation. U.S. News ranked it #82 among National Liberal Arts Colleges.</p>
@@ -1707,6 +2057,11 @@
         <span class="meta-badge">Boston, MA (Downtown, Beacon Hill)</span>
         <span class="meta-badge">Private university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1197</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.4</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">82%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Suffolk is positioned in the heart of downtown Boston, literally steps from the Massachusetts State House, the Financial District, the courthouse, and City Hall. This location drives the curriculum: Legal Studies is one of the most popular undergraduate majors, and the university has its own law school. The Sawyer Business School uses Boston's professional market — including the Celtics and Bruins — as teaching tools. Nearly 40 percent of Suffolk undergraduates study abroad at some point.</p>
         <div class="standout">
@@ -1725,6 +2080,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Syracuse, NY (University Hill neighborhood)</span>
         <span class="meta-badge">Private research university (R1); 13 schools and colleges; founded 1870</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1360</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.67</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">46%</span></div>
       </div>
       <div class="school-card-body">
         <p>Syracuse was founded in 1870 and was the first institution in the United States to grant a Bachelor of Fine Arts degree, in 1874. It also established one of the country's first architecture programs in 1873. The university has 13 schools and colleges offering over 200 undergraduate majors. The S.I. Newhouse School of Public Communications, established in 1934, is one of the most prestigious undergraduate communications schools in the country — alumni include major network anchors, producers, and journalists. The Maxwell School of Citizenship and Public Affairs operates the top-ranked graduate program in public affairs in the United States according to U.S. News, and its undergraduate programs in international relations and policy draw on those faculty resources. The School of Architecture is among the oldest and most respected undergraduate architecture programs in the country, offering a five-year Bachelor of Architecture. The College of Visual and Performing Arts is strong across art, design, drama, music, and film — with a Department of Creative Arts Therapy that offers one of the few undergraduate programs of its kind in the country. Syracuse competes in the ACC for most sports, giving it a major university athletic profile that shapes campus culture and alumni engagement.</p>
@@ -1745,6 +2105,11 @@
         <span class="meta-badge">Waterville, ME</span>
         <span class="meta-badge">Private career-focused college</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1020</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.15</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">97%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Thomas was founded in 1894 along the Kennebec River in central Maine. The college operates one of the most distinctive degree models in the region: a Guaranteed Job Program that secures employment for qualifying graduates within six months or reimburses tuition and provides free graduate courses until placement. Students also have access to a 3+1 accelerated degree (three years for a bachelor's, one year for a master's). The 99% placement rate the college reports reflects this model's effectiveness. Thomas has approximately 880 undergraduate students and 47% participate in NCAA Division III athletics.</p>
         <div class="standout">
@@ -1763,6 +2128,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Medford/Somerville, MA (main); Boston, MA (SMFA)</span>
         <span class="meta-badge">Private research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1530</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.08</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">10%</span></div>
       </div>
       <div class="school-card-body">
         <p>Tufts was founded in 1852 by Christian Universalists on Walnut Hill straddling Medford and Somerville, about five miles from Boston. It carries Carnegie R1 status — very high research activity — while remaining unusually undergraduate-focused for that classification. The School of Arts and Sciences, School of Engineering, and SMFA at Tufts (on the Fenway campus adjacent to the Museum of Fine Arts) all award undergraduate degrees. Tufts has the country's oldest graduate school of international relations, the Fletcher School of Law and Diplomacy, which shapes the undergraduate International Relations program through shared faculty and research proximity. The Experimental College (ExCollege) is a distinctive student-led initiative that has offered peer-taught courses since 1964. The count of 22 reflects programs genuinely new to the spreadsheet; the full major list exceeds 70.</p>
@@ -1783,6 +2153,11 @@
         <span class="meta-badge">Storrs, CT</span>
         <span class="meta-badge">Public flagship research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1340</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">49%</span></div>
+      </div>
       <div class="school-card-body">
         <p>UConn is Connecticut's flagship public university and has 82 majors in the file — the most of any school we've catalogued. Programs span business (School of Business is AACSB accredited), engineering, nursing, education, liberal arts, and fine arts. UConn is also a Division I athletics institution.</p>
         <div class="standout">
@@ -1801,6 +2176,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Amherst, MA</span>
         <span class="meta-badge">Public flagship research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1405</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.99</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">58%</span></div>
       </div>
       <div class="school-card-body">
         <p>UMass Amherst is the flagship of the Massachusetts state university system and has 80 majors in the file. It's a full research university with a Five College Consortium affiliation, meaning students can take courses at Amherst, Smith, Hampshire, and Mount Holyoke colleges. The Isenberg School of Management is one of the most respected public business schools in New England.</p>
@@ -1821,6 +2201,11 @@
         <span class="meta-badge">Boston, MA (Columbia Point, Boston Harbor)</span>
         <span class="meta-badge">Public research university (University of Massachusetts System)</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1200</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.35</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">79%</span></div>
+      </div>
       <div class="school-card-body">
         <p>UMass Boston is the only public university in Boston proper, sitting on Columbia Point peninsula extending into Boston Harbor. It is the most diverse campus in New England and the third most diverse in the United States, with students from over 130 countries. Founded in 1964, the university has six academic colleges and embeds the McCormack Graduate School of Policy and Global Studies within the College of Liberal Arts, giving undergraduates proximity to active policy researchers. The harbor location shapes environmental science and marine coursework directly — students conduct fieldwork on Boston Harbor, one of the most documented estuary restoration stories in the country. The 16 entries represent genuinely distinct programs not already catalogued from peer institutions.</p>
         <div class="standout">
@@ -1839,6 +2224,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Dartmouth, MA</span>
         <span class="meta-badge">Public research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1140</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.3</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">92%</span></div>
       </div>
       <div class="school-card-body">
         <p>UMass Dartmouth has strong programs in engineering, business, nursing, and the arts. The College of Visual and Performing Arts is notably strong for a mid-sized public university, and the school has an active research presence in marine science and coastal engineering given its South Coast location.</p>
@@ -1859,6 +2249,11 @@
         <span class="meta-badge">Lowell, MA</span>
         <span class="meta-badge">Public research university (University of Massachusetts System)</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1280</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.5</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">83%</span></div>
+      </div>
       <div class="school-card-body">
         <p>UMass Lowell grew from a merger of Lowell State College and Lowell Technological Institute, which explains its unusual combination of strong liberal arts and engineering programs under one roof. It has 120+ undergraduate majors across five colleges: Fine Arts, Humanities and Social Sciences; Engineering; Sciences; Business; and Health Sciences. Lowell itself is historically significant as the first planned industrial city in America, and the university's engineering and manufacturing programs carry that heritage forward. The university sits adjacent to a growing biotech and medical device corridor in the Merrimack Valley. UMass Lowell was ranked #1 in "What Matters Most" by U.S. News, reflecting strong outcomes relative to cost.</p>
         <div class="standout">
@@ -1877,6 +2272,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Orono, ME</span>
         <span class="meta-badge">Public flagship research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1190</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.49</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">97%</span></div>
       </div>
       <div class="school-card-body">
         <p>The University of Maine is the flagship of the UMaine System and a land-grant and sea-grant university, giving it particular strength in agriculture, forestry, engineering, and marine sciences. With 55 majors in the file, it covers the full range expected of a flagship.</p>
@@ -1897,6 +2297,11 @@
         <span class="meta-badge">Farmington, ME</span>
         <span class="meta-badge">Public liberal arts college (University of Maine System); Maine's first public university, founded 1864</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1090</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.18</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">97%</span></div>
+      </div>
       <div class="school-card-body">
         <p>UMF is Maine's public liberal arts college and a founding member of the Council of Public Liberal Arts Colleges (COPLAC). Established in 1864 as a Normal School — Maine's first publicly funded institution of higher education — it has maintained a teacher education focus while expanding into arts, sciences, and professional programs. The campus sits in downtown Farmington in western Maine, surrounded by mountains, lakes, and rivers that directly shape programs in environmental science, outdoor recreation, and field-based biology. Enrollment is around 1,600, placing it in the same size range as many selective private colleges. UMF is one of only three CAEP-nationally accredited teacher education programs in Maine and ranked in the top 10 Best Value schools in the Regional Colleges North category in 2025.</p>
         <div class="standout">
@@ -1915,6 +2320,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Biddeford, ME</span>
         <span class="meta-badge">Private university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1127</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.45</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">92%</span></div>
       </div>
       <div class="school-card-body">
         <p>UNE has a strong health sciences focus with one of the few osteopathic medical schools in New England. The undergraduate programs are oriented heavily toward pre-health, nursing, social work, and environmental science. The Biddeford campus sits on the Saco River and the Atlantic coast.</p>
@@ -1935,6 +2345,11 @@
         <span class="meta-badge">Durham, NH (main); Manchester and Concord campuses</span>
         <span class="meta-badge">Public research university; Land, Sea and Space Grant flagship of New Hampshire</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1210</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.63</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">88%</span></div>
+      </div>
       <div class="school-card-body">
         <p>UNH is the flagship of the University System of New Hampshire, founded in 1866 as the New Hampshire College of Agriculture and the Mechanic Arts. Its Land, Sea and Space Grant designations reflect research strengths in agriculture, marine science, and aerospace. The 1,100-acre Durham campus includes 300 acres of working farmland used in animal science and agriculture programs. The Shoals Marine Laboratory on Appledore Island, co-operated with Cornell University, gives marine biology students access to an offshore research station in the Gulf of Maine. The Carsey School of Public Policy conducts active research on rural communities and vulnerable families, influencing social work and public policy programs.</p>
         <div class="standout">
@@ -1953,6 +2368,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Kingston, RI</span>
         <span class="meta-badge">Public flagship research university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1160</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.58</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">72%</span></div>
       </div>
       <div class="school-card-body">
         <p>URI is Rhode Island's flagship public university with 56 majors. It has a nationally recognized College of Pharmacy, an oceanography program with its own research vessel, and a well-regarded business school. URI is also known for its cooperative education program.</p>
@@ -1973,6 +2393,11 @@
         <span class="meta-badge">Portland, ME (with Gorham campus)</span>
         <span class="meta-badge">Public university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1130</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.22</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">79%</span></div>
+      </div>
       <div class="school-card-body">
         <p>USM serves the Greater Portland region and has a mix of professional, liberal arts, and health sciences programs. The Lewiston-Auburn campus and downtown Portland location give students access to Maine's most economically active metro area. Strong programs in social work, nursing, and computer science.</p>
         <div class="standout">
@@ -1991,6 +2416,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Utica, NY; satellite locations in Syracuse and Latham</span>
         <span class="meta-badge">Private university; formerly Utica College of Syracuse University; independent since 1995; renamed 2022</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1110</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.21</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">92%</span></div>
       </div>
       <div class="school-card-body">
         <p>Utica University began in 1946 as an extension campus of Syracuse University and became fully independent in 1995 — it still uses orange as a school color and calls its newspaper The Tangerine as a nod to the Syracuse connection. The university officially changed its name from Utica College to Utica University in 2022. It offers 40 undergraduate majors across three schools: Arts and Sciences, Business and Justice Studies, and Health Professions and Education. Utica has built one of the most distinctive cybersecurity programs in the Northeast at a school of its size. It holds three federal designations: National Center of Academic Excellence in Cyber Defense (NSA/DHS), National Center of Digital Forensics Academic Excellence (DOD Cyber Crime Center), and Academic Center of Excellence from the EC-Council. The Fraud and Financial Crime Investigation major is offered at very few undergraduate institutions anywhere in the country. Criminal Intelligence Analysis is similarly specialized and feeds directly into law enforcement and intelligence careers. The nursing programs are CCNE accredited, and the health professions infrastructure supports DPT and occupational therapy pathways. Utica is a small, affordable private university — tuition is among the lowest of any four-year private college in upstate New York.</p>
@@ -2011,6 +2441,11 @@
         <span class="meta-badge">Burlington, VT</span>
         <span class="meta-badge">Public research university</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1340</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.75</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">60%</span></div>
+      </div>
       <div class="school-card-body">
         <p>UVM is a public research university with a strong environmental mission, a medical school, and one of the few dedicated Environmental Studies colleges at any public university. Agriculture, natural resources, and sustainability are woven into many programs. Burlington's setting on Lake Champlain shapes much of UVM's character.</p>
         <div class="standout">
@@ -2029,6 +2464,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Poughkeepsie, NY</span>
         <span class="meta-badge">Private liberal arts college</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1500</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.07</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">19%</span></div>
       </div>
       <div class="school-card-body">
         <p>Vassar is one of the original Seven Sisters (now coed) and offers 49 majors, large for a liberal arts college. The college has no core requirements beyond the first-year writing seminar, giving students unusual freedom. Science and Technology Studies, Cognitive Science, and Media Studies are among the more contemporary interdisciplinary programs.</p>
@@ -2049,6 +2489,11 @@
         <span class="meta-badge">Wellesley, MA</span>
         <span class="meta-badge">Private women's liberal arts college; member of the Seven Sisters</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1480</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.1</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">16%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Wellesley was founded in 1870 with the explicit mission of preparing women for "great conflicts" and "vast reforms in social life." It is a member of the Seven Sisters and consistently ranks among the top liberal arts colleges in the country. The 500-acre campus was designed by Frederick Law Olmsted and includes the Davis Museum and a botanic garden. Wellesley was the second college in the United States to introduce laboratory science instruction for undergraduates. It has cross-registration with MIT and dual-degree programs with MIT, Olin College of Engineering, and a joint BA/MA program with Brandeis's International Business School. In 2015 Wellesley updated its admissions policy to welcome transgender and non-binary students assigned female at birth. The count of 18 reflects programs genuinely new to the spreadsheet; many Wellesley majors were already catalogued from peer liberal arts institutions. Alumnae include Hillary Clinton, Madeleine Albright, Cokie Roberts, and Nora Ephron.</p>
         <div class="standout">
@@ -2067,6 +2512,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Boston, MA (Fenway neighborhood)</span>
         <span class="meta-badge">Private technology university</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1216</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.42</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">91%</span></div>
       </div>
       <div class="school-card-body">
         <p>Wentworth was founded in 1904 through a bequest from Boston merchant Arioch Wentworth, with a mission of furnishing education in the mechanical arts. It sits on a 31-acre campus in the Fenway neighborhood, adjacent to the Museum of Fine Arts, the Gardner Museum, Symphony Hall, and Fenway Park. As a member of the Colleges of the Fenway consortium, Wentworth students can cross-register at Emmanuel College, MassArt, MCPHS, and Simmons. The defining feature of a Wentworth education is mandatory co-op: all students complete at least two semesters of full-time paid work in their field, with an optional third. The school reports 97% of recent graduates placed in their field or enrolled in graduate school within six months. The count of 8 reflects programs genuinely new to the spreadsheet; there is considerable overlap with programs already catalogued from other engineering and architecture institutions.</p>
@@ -2087,6 +2537,11 @@
         <span class="meta-badge">Middletown, CT</span>
         <span class="meta-badge">Private liberal arts university; member of "The Little Three" with Amherst and Williams</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1475</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.93</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">16%</span></div>
+      </div>
       <div class="school-card-body">
         <p>Wesleyan was founded in 1831 and operates a fully open curriculum — no required courses beyond distributional guidelines. It is part of "The Little Three" alongside Amherst and Williams, consistently ranking among the top liberal arts universities in the country. The university has 47 majors; 40% of students double major. Wesleyan is the only undergraduate liberal arts college designated a Molecular Biophysics Predoctoral Research Training Center by the NIH. The 11-building Center for the Arts houses galleries, a 400-seat theater, a black box theater, music performance spaces, and recording studios. Wesleyan also offers 3-2 engineering programs with Caltech and Columbia. Its Film Studies program has produced a disproportionate number of Hollywood figures, including Joss Whedon, Michael Bay, and Lena Dunham.</p>
         <div class="standout">
@@ -2105,6 +2560,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">Williamstown, MA (Berkshires)</span>
         <span class="meta-badge">Private liberal arts college; member of "The Little Three" with Amherst and Wesleyan</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1540</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.07</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">9%</span></div>
       </div>
       <div class="school-card-body">
         <p>Williams was founded in 1793 and sits on a 450-acre campus in the Berkshires — one of the most rural settings of any highly selective college in the country. The 6:1 student-faculty ratio and 97% four-year graduation rate reflect an institution that invests deeply in individual student attention. Williams is known for its tutorial program — small-group sessions of two students and one professor modeled on the Oxford tutorial. The college maintains close ties to the Clark Art Institute and MASS MoCA, both in Williamstown, giving arts programs access to world-class collections. Williams has a January Winter Study term and has won 22 of 29 College Directors' Cups for NCAA Division III athletic excellence. The count of 6 reflects programs genuinely new to the spreadsheet; most Williams majors were already catalogued from peer liberal arts institutions.</p>
@@ -2125,6 +2585,11 @@
         <span class="meta-badge">Worcester, MA</span>
         <span class="meta-badge">Private research university (R1); one of the first U.S. engineering and technology universities, founded 1865</span>
       </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1380</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">3.9</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">60%</span></div>
+      </div>
       <div class="school-card-body">
         <p>WPI was founded in 1865 and is R1-classified with 50+ degree programs across Schools of Engineering, Arts and Sciences, Business, and Global Studies. The WPI Plan requires all undergraduates to complete two significant projects: a Major Qualifying Project (equivalent to a senior thesis in the student's discipline) and an Interactive Qualifying Project (an open-ended problem at the intersection of technology and society). Many IQPs are completed at WPI's global project centers — students have worked on water systems in rural Thailand, STEM education in inner-city Boston, and sustainable agriculture in Morocco. Seven-week terms allow students to explore more areas than semester systems allow. The count of 13 reflects programs genuinely new to the spreadsheet; WPI has over 50 degree programs total.</p>
         <div class="standout">
@@ -2143,6 +2608,11 @@
       <div class="school-card-meta">
         <span class="meta-badge">New Haven, CT</span>
         <span class="meta-badge">Private Ivy League research university; chartered 1701</span>
+      </div>
+      <div class="school-card-stats">
+        <div class="stat-item"><span class="stat-label">Avg SAT</span><span class="stat-value">1570</span></div>
+        <div class="stat-item"><span class="stat-label">Avg GPA</span><span class="stat-value">4.14</span></div>
+        <div class="stat-item"><span class="stat-label">Acceptance</span><span class="stat-value">5%</span></div>
       </div>
       <div class="school-card-body">
         <p>Yale was chartered in 1701 and is the third-oldest institution of higher education in the United States. Yale College operates on a residential college system — all students are assigned to one of twelve residential colleges before arriving, which serve as the social and intellectual center of undergraduate life for four years. The 5:1 student-faculty ratio is among the lowest of any research university in the country. Yale offers 80+ undergraduate majors and allows students until the end of sophomore year to declare. Undergraduates can pursue joint bachelor's/master's programs in nearly 20 departments, and the Jackson School of Global Affairs offers pathways to a master's degree with just one additional year of study. The count of 14 reflects programs genuinely new to the spreadsheet; Yale has 80+ majors with most already catalogued from peer institutions.</p>
